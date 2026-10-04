@@ -8,9 +8,9 @@
 
 ## 1. Project Description
 
-The **Private Network Service Platform** is an end-to-end, multi-tier private network architecture deployed across a local area network on heterogeneous devices (macOS and Raspberry Pi Linux). The system demonstrates production networking concepts:
+The **Private Network Service Platform** is a multi-tier private network architecture deployed across a local area network on heterogeneous devices (macOS and Raspberry Pi Linux). The system demonstrates production networking concepts:
 
-1. **Authoritative Private Name Resolution**: Isolated DNS service resolving private domain `app.dracarys.test` via `dnsmasq`.
+1. **Private Name Resolution**: Private DNS service resolving local domain `app.dracarys.test` via `dnsmasq`.
 2. **Edge Reverse Proxy & TLS Termination**: `nginx 1.31.6` terminating TLSv1.2/TLSv1.3 with a custom Public Key Infrastructure (PKI) Local CA, forwarding traffic to backend pools.
 3. **Round-Robin Load Balancing**: Equal-weight load distribution across heterogeneous backend servers with automated failover.
 4. **Application Backends with HTTP/1.1 Semantics**: Python HTTP servers providing REST endpoints (`/`, `/api/status`), method handling (`GET`, `HEAD`), cache control headers (`Cache-Control: max-age=60`), and conditional revalidation via `ETag` returning `304 Not Modified`.
@@ -162,7 +162,7 @@ python3 server.py
 Run the following commands from any client machine connected to the same subnet:
 
 ### 7.1 DNS Name Resolution Testing
-Test resolution directly against the authoritative private DNS server:
+Test resolution directly against the private DNS server:
 ```bash
 # Query the private DNS server directly
 dig @10.7.3.26 app.dracarys.test
@@ -248,7 +248,7 @@ X-Backend: A
 
 ## 8. Failure Demonstrations Summary
 
-A comprehensive failure matrix was executed across all tiers (documented in detail in [docs/failure-tests.md](file:///Users/shreyanarayani/dracarys-cn-project/docs/failure-tests.md)):
+A comprehensive failure matrix was executed across all tiers (documented in detail in [docs/failure-tests.md](docs/failure-tests.md)):
 1. **Wrong DNS Server**: Lookup failed/timed out while IP layer ping remained functional.
 2. **Wrong DNS Record**: Domain pointed to non-routable `192.0.2.123`; DNS succeeded, but TCP handshake timed out.
 3. **One Backend Down (Formal D3 Demo)**: Backend B stopped; nginx seamlessly routed 100% of traffic to Backend A without client-visible downtime. Traffic re-balanced upon restarting Backend B.

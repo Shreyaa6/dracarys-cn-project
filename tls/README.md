@@ -10,15 +10,15 @@ For our private domain `app.dracarys.test`, public Certificate Authorities (such
 
 To provide genuine, cryptographically secure TLS termination without insecure browser or client flags:
 - We created a dedicated internal Certificate Authority: **Dracarys Local CA**.
-- The root CA certificate was generated and installed into the trusted system certificate stores (macOS Keychain) on all client machines.
-- Using this Local CA, we signed a server leaf certificate with Common Name / Subject Alternative Name (SAN) for `app.dracarys.test`.
+- The public root CA certificate is available in this repository at [`tls/dracarys-ca.crt`](dracarys-ca.crt). Client machines import and trust this public certificate in their trusted system certificate stores (macOS Keychain).
+- Using this Local CA, we signed a server leaf certificate covering only `app.dracarys.test`.
 
 ---
 
 ## 2. Server Certificate Details
 
 - **Common Name (CN)**: `app.dracarys.test`
-- **Subject Alternative Name (SAN)**: `DNS:app.dracarys.test`
+- **Subject Alternative Name (SAN)**: `DNS:app.dracarys.test` (covers only `app.dracarys.test`)
 - **Issuer**: `Dracarys Local CA`
 - **Signature Algorithm**: SHA-256 with RSA encryption
 - **Protocols Supported**: TLSv1.2, TLSv1.3
@@ -56,7 +56,8 @@ Because the root certificate of **Dracarys Local CA** is imported and marked as 
 
 > [!CAUTION]
 > **Zero Private Key Policy**:
-> Private keys (`*.key`, `*.pem`, `*.p12`, etc.) contain secret cryptographic material that must never leave the host machine. 
-> - Under **NO** circumstances should `app.dracarys.test.key` or CA private keys be committed to this repository.
+> Private keys (`*.key`, `*.pem`, `*.p12`, etc.) contain secret cryptographic material that must never leave the host machine.
+> - Under **NO** circumstances should `app.dracarys.test.key` or CA private keys be committed to this repository. CA and server private keys are deliberately NOT stored in Git.
+> - Only the public CA root certificate ([`tls/dracarys-ca.crt`](dracarys-ca.crt)) is tracked in the repository for client trust store installation.
 > - The repository's `.gitignore` explicitly blocks all key extensions.
 > - The actual server certificate and key files remain exclusively on `/usr/local/etc/nginx/certs/` on Pranjal's Mac.
