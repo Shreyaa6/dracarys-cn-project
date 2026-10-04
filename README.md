@@ -251,7 +251,7 @@ X-Backend: A
 A comprehensive failure matrix was executed across all tiers (documented in detail in [docs/failure-tests.md](docs/failure-tests.md)):
 1. **Wrong DNS Server**: Lookup failed/timed out while IP layer ping remained functional.
 2. **Wrong DNS Record**: Domain pointed to non-routable `192.0.2.123`; DNS succeeded, but TCP handshake timed out.
-3. **One Backend Down (Formal D3 Demo)**: Backend B stopped; nginx seamlessly routed 100% of traffic to Backend A without client-visible downtime. Traffic re-balanced upon restarting Backend B.
+3. **One Backend Down (Formal D3 Demo)**: Backend B stopped; demonstrated requests continued returning HTTP 200 from Backend A. Alternating responses resumed after Backend B was restarted.
 4. **Both Backends Down**: nginx returned `HTTP/1.1 502 Bad Gateway`.
 5. **Wrong Destination Port**: Requests to port `8444` were rejected with TCP RST (`Connection refused`).
 

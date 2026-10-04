@@ -58,7 +58,7 @@ Validates Layer 4 reliable transport on nginx HTTPS port 8443:
     2. Edge server port `8443 -> 50041 [SYN, ACK] Seq=0 Ack=1`
     3. Client port `50041 -> 8443 [ACK] Seq=1 Ack=1`
 - [tcp-connection-overview.jpeg](tcp/tcp-connection-overview.jpeg):
-  - **What it Proves**: Full TCP connection lifecycle filtered by `tcp.port == 8443`, showing transmission of all 44 captured packets including data segments, duplicate ACKs/retransmissions, and graceful two-way connection termination (`FIN, ACK`).
+  - **What it Proves**: Full TCP connection lifecycle filtered by `tcp.port == 8443`, showing captured packets across the session including handshake, data segments, ACKs, and graceful two-way connection termination (`FIN, ACK`).
 
 ---
 

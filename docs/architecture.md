@@ -40,7 +40,7 @@ Prior to service configuration, Layer 3 direct IP connectivity was verified acro
 
 | Source Node | Destination Node | Destination IP | Packets Transmitted | Packets Received | Packet Loss | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Shreya Mac** (`10.7.3.26`) | Pranjal Mac | `10.7.26.65` | 3 | 3 | 0% | Verified |
+| **Pranjal Mac** (`10.7.26.65`) | Shreya Mac | `10.7.3.26` | 3 | 3 | 0% | Verified |
 | **Shreya Mac** (`10.7.3.26`) | Meghna Mac | `10.7.22.237` | 3 | 3 | 0% | Verified |
 | **Shreya Mac** (`10.7.3.26`) | Raspberry Pi | `10.7.23.235` | 3 | 3 | 0% | Verified |
 | **Pranjal Mac** (`10.7.26.65`) | Meghna Mac | `10.7.22.237` | 3 | 3 | 0% | Verified |
@@ -98,7 +98,7 @@ graph TD
     Edge -->|"4b. Reverse Proxy Request (HTTP/1.1 :3002)"| BackB
     BackA -.->|"5a. Plaintext HTTP Response (X-Backend: A)"| Edge
     BackB -.->|"5b. Plaintext HTTP Response (X-Backend: B)"| Edge
-    Edge ==.->|"6. Terminated TLS Response Stream"| Client
+    Edge -.->|"6. Terminated TLS Response Stream"| Client
 ```
 
 ---
@@ -212,7 +212,7 @@ In default round-robin mode (`weight=1`), requests alternate equally:
 - Request 3: Cycles back to Backend A, and so on.
 
 ### 10.2 Automated Upstream Failover
-If an upstream node fails (e.g. Backend B process terminates), nginx detects the upstream connection failure and automatically retries the pending request on the remaining healthy upstream member (`Backend A`) via standard `proxy_next_upstream` mechanisms. The client receives an uninterrupted `200 OK` response with zero visible downtime.
+If an upstream node fails (e.g. Backend B process terminates), nginx detects the upstream connection failure and automatically retries the pending request on the remaining healthy upstream member (`Backend A`) via standard `proxy_next_upstream` mechanisms. Demonstrated requests continued returning HTTP 200 from Backend A while Backend B was unavailable.
 
 ---
 
@@ -388,17 +388,16 @@ A comprehensive failure matrix was executed across all layers to validate resili
 The team gathered and verified empirical artifacts during the live demonstration:
 
 1. **Machine & Network Inventory**: Documented IP addresses, MAC addresses, interfaces, and gateway.
-2. **Pairwise Ping Results**: 6-way full-mesh ping validation confirming 0% packet loss.
+2. **Pairwise Ping Results**: Pairwise ping validation across participating hosts confirming 0% packet loss in the demonstrated tests.
 3. **Private DNS `dig` Output**: Verified resolution of `app.dracarys.test` to `10.7.26.65`.
-4. **Public DNS `NXDOMAIN` Comparison**: Proved private scope isolation against public resolvers.
-5. **Trusted HTTPS `curl` Verification**: Validated TLS verification without `-k` / `--insecure`.
-6. **Round-Robin Load Balancing Logs**: Terminal traces demonstrating equal `A -> B -> A -> B` alternation.
-7. **Caching Headers & `304 Not Modified` Traces**: Validated `Cache-Control: max-age=60`, `ETag`, and `If-None-Match` revalidation.
-8. **Wireshark DNS Capture**: UDP port 53 query and response transaction records.
-9. **Wireshark TCP Handshake Capture**: Three-way handshake (`SYN`, `SYN-ACK`, `ACK`) on port 8443.
-10. **Wireshark TLS Handshake Capture**: Full TLS 1.2 negotiation exchange records.
-11. **Encrypted TLS Application Data Capture**: Verified that HTTP application data is fully encrypted on the wire.
-12. **Five Resilience Demonstrations**: Execution logs for all injected failure scenarios.
+4. **Trusted HTTPS `curl` Verification**: Validated TLS verification without `-k` / `--insecure`.
+5. **Round-Robin Load Balancing Logs**: Terminal traces demonstrating equal `A -> B -> A -> B` alternation.
+6. **Caching Headers & `304 Not Modified` Traces**: Validated `Cache-Control: max-age=60`, `ETag`, and `If-None-Match` revalidation.
+7. **Wireshark DNS Capture**: UDP port 53 query and response transaction records.
+8. **Wireshark TCP Handshake Capture**: Three-way handshake (`SYN`, `SYN-ACK`, `ACK`) on port 8443.
+9. **Wireshark TLS Handshake Capture**: Full TLS 1.2 negotiation exchange records.
+10. **Encrypted TLS Application Data Capture**: Verified that HTTP application data is fully encrypted on the wire.
+11. **Five Resilience Demonstrations**: Execution logs for all injected failure scenarios.
 
 > [!NOTE]
 > Detailed descriptions of all capture files are documented in [evidence/README.md](../evidence/README.md). In accordance with repository policies, binary capture files (`.pcapng`) and terminal logs are stored locally and must be added separately if tracked in GitHub.
