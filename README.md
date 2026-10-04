@@ -22,10 +22,10 @@ The **Private Network Service Platform** is an end-to-end, multi-tier private ne
 
 | Name | Role / Machine Responsibility | Enrollment Number |
 | :--- | :--- | :--- |
-| **Pranjal Shukla** | Edge Reverse Proxy, TLS Termination, Load Balancer (nginx on macOS) | *TODO: [Insert Enrollment Number]* |
-| **Shreya Narayani** | Authoritative Private DNS Server (dnsmasq on macOS) | *TODO: [Insert Enrollment Number]* |
-| **Meghna Nair** | Application Backend A (Python HTTPServer on macOS) | *TODO: [Insert Enrollment Number]* |
-| *TODO: [Additional Team Member if applicable]* | Backend B / System Testing (Raspberry Pi) | *TODO: [Insert Enrollment Number]* |
+| **Shreya Narayani** | Authoritative Private DNS Server (dnsmasq on macOS) | 2401020067 |
+| **Meghna Nair** | Application Backend A (Python HTTPServer on macOS) | 2401010274 |
+| **Pranjal Shukla** | Edge Reverse Proxy, TLS Termination, Load Balancer (nginx on macOS) | 2401010335 |
+| **Ritesh Kumar** | — | 2401010384 |
 
 ---
 
@@ -194,7 +194,6 @@ curl -sI https://app.dracarys.test:8443/api/status
 HTTP/1.1 200 OK
 Server: nginx/1.31.6
 Content-Type: application/json
-Content-Length: 35
 X-Backend: A
 ETag: "dracarys-v1"
 Cache-Control: max-age=60
