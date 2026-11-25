@@ -1,0 +1,42 @@
+De hc ne Gola EC rere eel
+ranjalshukla@Pranjals—MacBook-Pro-3 ~ % date '+%H:%M:%S'
+jig @10.7.3.26 ttl.dracarys.test A +noall +answer
+
+Jig @10.7.30.248 ttl.dracarys.test A +noall +answer
+
+L9 336311
+
+<<>> DiG 9.10.6 <<>> @10.7.3.26 ttl.dracarys.test A +noall +answer
+(1 server found)
+
+-; global options: +cmd
+
+ttl.dracarys.test. 120 IN A 10°7.12.197
+
+<<>> DIG 9.10.6 <<>> Q10.7.30.248 ttl.dracarys.test A +noall +answer
+(1 server found)
+
+; global options: +cmd
+
+ttl.dracarys.test. 126 IN A 10.7.12.197
+yranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo dscacheutil -flushcache
+sudo killall —-HUP mDNSResponder
+
+For i in {1..40
+date '+%H:%M:%S'
+dscacheutil -q host -a name ttl.dracarys.test
+sleep 5
+
+Jone
+
+>assword:
+
+L9:38:20
+
+1ame: ttl.dracarys.test
+
+ip_address: 10.7.12.197
+
+L9: 38:26
+lame: ttl.dracarys.test
+ip_address: 10.7.12.197

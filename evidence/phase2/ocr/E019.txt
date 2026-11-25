@@ -1,0 +1,69 @@
+ares chai io a |
+bal
+
+~—-zsh ~—-zsh
+
+@ @ @ BM pranjalshukla— -zsh —197x61
+
+2 Request 4
+15:43:48
+HTTP/1.1 208 OK
+X-Backend: B
+X-Edge: primary
+. Request 5
+15:43:49
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Request 6
+15:43:50
+HTTP/1.1 208 OK
+X-Backend: B
+X-Edge: primary
+Request 7
+15:43:51
+HTTP/1.1 208 OK
+X-Backend: A
+X-Edge: primary
+Request 8
+15:43:52
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 9
+15:43:53
+HTTP/1.1 208 OK
+X-Backend: A
+X-Edge: primary
+Request 10
+15:43:55
+HTTP/1.1 200 OK
+= X-Backend: B
+X-Edge: primary
+we Request 11
+\ 15:43:56
+HTTP/1.1 208 OK
+- X-Backend: A
+X-Edge: primary
+Request 12
+15:43:57
+HTTP/1.1 208 OK \shots.
+X-Backend: B
+X-Edge: primary
+Request 13
+15:43:58
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Request 14
+15:43:59
+HTTP/1.1 208 OK
+X-Backend: B
+X-Edge: primary
+Request 15
+15:44:00
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % ff
+

@@ -1,0 +1,97 @@
+Connected IP: 10.7.30.248
+19:25:20
+
+HITP/1.1 200 OK
+
+X-Backend: A
+
+X-Edge: standby
+Connected IP: 10.7.30.248
+19:25:25
+
+HITP/1.1 200 OK
+
+X-Backend: B
+
+X-Edge: standby
+Connected IP: 10.7.30.248
+19:25:30
+
+HITP/1.1 200 OK
+
+A
+
+: standby
+Connected IP: 10.7.30.248
+19:25:35
+
+HITP/1.1 200 OK
+X-Backend: B
+
+X-Edge: standby
+Connected IP: 10.7.30.248
+19:25:41
+
+HTTP/1.1 200 OK
+X-Backend: A
+
+X-Edge: standby
+Connected IP: 10.7.30.248
+19:25:46
+
+HTTP/1.1 200 OK
+X-Backend: B
+
+X-Edge: standby
+Connected IP: 10.7.30.248
+19:25:51
+
+HTTP/1.1 200 OK
+
+X-Backend: A
+
+X-Edge: standby
+Connected IP: 10.7.30.248
+19:25:57
+
+HTTP/41.1 200 OK
+
+X-Backend: B
+
+X-Edge: standby
+Connected IP: 10.7.30.248
+19:26:02
+
+HTTP/1.1 200 OK
+
+X-Backend: A
+
+X-Edge: standby
+Connected IP: 10.7.30.248
+
+19:26:07
+HTTP/1.1 200 OK
+X-Backend: B
+
+X-Edge: standby
+
+Connected IP: 10.7.30.248
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % date ‘+%H
+dig @10.7.3.26 app-dracarys.test A +noall +answer
+[dig @1@.7.30.248 app.dracarys.test A +noall +answer
+19:27:29
+
+j <<>> DIG 9.10.6 <<>> 010.7.3.26 app.dracarys.test A +noall +answer
+j (1 server found)
+
+ij global options: +cmd
+
+app.dracarys. test. 30 IN A 10.7.12.197
+
+<<>> DIG 9.10.6 <<>> 010.7.30.248 app.dracarys.test A +noall +answer
+(1 server found)
+
+#2 global options: +cmd
+
+app.dracarys.test. 30 IN A 10.7.12.197
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % lf

@@ -1,0 +1,93 @@
+a
+=
+
+¥
+
+.
+
+q
+
+.
+\
+
+«
+
+i
+
+S
+
+© © FHanuman chaisa in 216m a SYR’ FB Tue 24 Noy
+
+Se ~<-zsh ~=-2sh +
+al : a
+Z X-Backend: B
+X-Edge: primary
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % for i in {1..15}; do
+echo "Request $i"
+1x8"
+connect-timeout 3 —-max-time 15 \
+/dev/nul \
+Japp.dracarys.test:8443/api/status \
+| grep -Ei '*HTTP/|*X-Backend: | *X-Edge: '
+sleep 2
+
+@ @ @ BM pranjalshukla— -zsh —197x61
+
+St
+H:
+
+4 [done ]
+
+A Request 1
+A. 15243244
+HTTP/1.1 20@ Ok
+yp X-Backend: B
+X-Edge: primary
+Request 2
+M 18:43:45
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 3
+15:43:47
+HTTP/1.4 ze ok
+X-Backen
+X-Edge: eee
+Request 4
+15:43:48
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 5
+15:43:49
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Request 6
+15:43:50
+HTTP/1.2 a0 OK
+X-Backen
+X-Edge: ony
+Request 7
+15:43:52
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Request 8
+15:43:52
+HTTP/1.1 208 OK
+X-Backend: B
+/ X-Edge: primary
+Request 9
+15:43:53
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Request 10
+15:43:55
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+
+ishots
+

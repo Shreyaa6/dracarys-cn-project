@@ -1,0 +1,42 @@
+_pranjalshukla@Pranjals—MacBook-Pro-3 ~%1
+total 56
+
+-rw-r--r--@ 1 root admin 1111
+-rw-r--r--@ 1 root admin 903
+-rw-r--r-- 1 root admin 113
+
+pranjalshukla admin 1704
+root admin 1090
+root admin 1700
+-rw-r--r--@ 1 root admin 41
+pranjalshukla@Pranjals—MacBook-Pro-3 ~ % fj
+
+s
+
+PPR PR RR
+
+-1 /usr/local/etc/nginx/certs
+
+Oct
+Oct
+Oct
+Oct
+Oct
+Oct
+Oct
+
+18:50
+18:49
+18:48
+18:48
+18:47
+18:47
+18:50
+
+app.dracarys.test.crt
+app.dracarys.test.csr
+app.dracarys.test.ext
+app.dracarys.test.key
+dracarys-ca.crt
+dracarys-ca.key
+dracarys-ca.srl

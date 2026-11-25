@@ -1,0 +1,68 @@
+: ( @ @ @ BM pranjaishukla — -zsh — 175x52
+
+[ttl.dracarys.test. 30 IN A 10.7.12.197
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo dscacheutil -flushcache
+
+Password:
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo killall -HUP mONSResponder
+
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % for i in {1..20}; do
+date '4+%H:5M:
+dscacheutil -q host
+sleep 3
+
+done
+
+18:20:47
+
+name: tt1.dracarys. test|
+
+; ip_address: 1@.7.12.197
+
+a name ttl.dracarys.test
+
+15:20:51
+ttl.dracarys.test
+\ddress: 10.7.12.197
+
+15:20:56
+} Mame: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+[15:20:57
+ra name: ttl.dracarys.test
+1 ip_address: 10.7.12.197
+ra 15:21:08
+Q. name: ttl.dracarys.test
+(0. ip_address: 10.7.12.197
+ra
+
+18:21:03
+
+name: ttl.dracarys.test
+» ip_address: 10.7.12.197
+
+15:21:06
+» name: ttl-dracarys.test
+| ip_eddress: 10.7.12.197
+
+ttl.dracarys.test
+ip_address: 10.7.12.197
+
+18:21:12
+ttl.dracarys.test
+
+name:
+ip_address: 10.7.12.197
+18:21:15
+ttl.dracarys.test
+ip_address: 10.7.12.197
+
+15:21:18
+
+—_
+
+j
+
+~=-2sh
+

@@ -1,0 +1,72 @@
+19:26:07
+HTTP/1.1 200 OK
+
+X-Backend: B
+
+X-Edge: standby
+
+Connected IP: 10.7.30.248
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % date ‘+%H:
+dig @10.7.3.26 app-dracarys.test A +noall +answer
+[dig @10.7.30.248 app.dracarys.test A +noall +answer
+19:27:29
+
+<<>> DiG 9.10.6 <<>> @10.7.3.26 app.dracarys.test A +noall +answer
+(1 server found)
+
+ij global options: +cmd
+
+app.dracarys. test. 30 IN A 10.7.12.197
+
+<<>> DiG 9.10.6 <<>> @10.7.30.248 app.dracarys.test A +noall +answer
+(1 server found)
+i; global options: +cmd
+app. dracarys.test. 30 IN A 10.7.12.197
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % for i in {1..6}; do
+echo "Request $i*
+date ‘4 %S'
+curl -s$ —-connect-timeout 5 --max-time 15 \
+=D - -0 /dev/null \
+-w ‘Connected IP: %{remote_ip}\n' \
+https://app.dracarys.test:8443/api/status \
+| grep -Ei '*HTTP/|*X-Backend: |*X-Edge: |*Connected 1P:'
+sleep 1
+(done
+Request 1
+19:30:44
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Connected IP: 10.7.12.197
+Request 2
+19:30:46
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Connected IP: 10.7.12.197
+Request 3
+19:30:47
+HTTP/1.1 260 OK
+X-Backend: B
+X-Edge: primary
+Connected IP: 10.7.12.197
+Request 4
+19:30:48
+HTTP/1.1 208 OK
+X-Backend: A
+X-Edge: primary
+Connected IP: 10.7.12.197
+Request 5
+19:30:49
+HTTP/2.1 208 OK
+X-Backen
+: primary
+Connected IP: 10.7.12.197
+Request 6
+19:30:50
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Connected IP: 10.7.12.197
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % ff
+

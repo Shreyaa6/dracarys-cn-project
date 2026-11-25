@@ -1,0 +1,96 @@
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % curl ~
+HTTP/1.0 200 OK
+
+Server: BaseHTTP/@.6 Python/3.14.5
+
+Date: Tue, 24 Nov 2026 12:49:08 GMT
+Content-Type: application/json
+
+Content-Length: 32
+
+X-Backend: A
+
+Cache-Control: max-age=60
+
+“dracarys-v1"
+
+—connect-timeout 3 -~max-time 5 http://10.7.30.248:3001/api/status
+
+(pranjalshukla@Pranjals-MacBook-Pro-3 ~ % curl -i --connect-timeout 3 —max-time 5 http://10.7.6.30:3002/api/status
+HITP/1.0 200 OK
+
+BaseHTTP/0.6 Python/3.12.3
+
+Tue, 24 Nov 2026 13:07:12 GMT
+
+Content-Type: application/json
+
+Content-Length: 32
+
+X-Backend: B
+
+Cache-Control: max-age=60
+
+ETag: “dracarys-vi"
+
+[{*backend": *B*, "status": *ok">E
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % 1s -1 /usr/local/ete/nginx/certs
+total 56
+@ 1 root admin 1111 4 Oct 18:50 app.dracarys.test.crt
+@ 1 root admin 983 4 Oct 18:49 app.dracarys.test.csr
+1 root admin 113 4 Oct 18:48 app.dracarys.test.ext
+@ 1 pranjalshukla admin 1704 4 Oct 18:48 app.dracarys.test.key
+@ 1 root admin 109@ 4 Oct 18:47 dracarys-ca.crt
+1 root admin 1700 4 Oct 18:47 dracarys-ca.key
+@ 1 root admin 41 4 Oct 18:60 dracarys-ca.srl
+
+(pranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo chmod 6@@ /usr/local/etc/nginx/certs/dracarys-ca.key /ust/local/etc/nginx/certs/app.dracarys.test.key
+Password:
+(pranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo chmod 6@@ /usr/local/etc/nginx/certs/dracarys-ca.key /usr/local/etc/nginx/certs/app.dracarys.test.key
+(Password:
+(pranjalshukla@Pranjals-MacBook-Pro-3 ~ % 1s -1 ~/Downloads/standby.csr
+=tW-------@ 1 pranjalshukla staff 903 24 Nov 18:48 /Users/pranjalshukla/Downloads/standby csr
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % cat > ~/Downloads/standby-ext.cnf <<'EOF'
+basicConstraints=critical, CA: FALSE
+keyUsage=critical, digitalSignature, keyEncipherment
+extendedkeyUsage=serverAuth
+subjectAltName=DNS: app.dracarys.test
+(€or
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo openssl x509 -req \
+
+=in "SHOME/Downloads/standby.csr" \
+
+“CA /usr/local/etc/nginx/certs/dracarys-ca.crt \
+
+“CAkey /ust/local/etc/nginx/certs/dracarys-ca.key \
+
+~CAserial /usr/local/etc/nginx/certs/dracarys-ca.srl \
+
+-out "SHOME/Downloads/standby.crt" \
+
+-days 98 \
+
+=sha256 \
+
+extfile "SHOME/Downloads/standby-ext.cnf™
+Certificate request self-signature ok
+subject=CN=app.dracarys.test
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % openssl verify \
+
+-CAfile /usr/local/ete/nginx/certs/dracarys-ca.crt \
+| ~/Downloads/standby.crt
+JUsers/pranjalshukla/Downloads/standby.crt: OK
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % openssl x69 ~in ~/Downloads/standby.crt \
+
+=noout -subject -issuer -dates -ext subjectAltName
+subject=CN=app.dracarys. test
+issue racarys Local CA
+125206 2026 GMT
+
+eb 22 13:25:06 2027 GMT
+
+X509v3 Subject Alternative Name:
+
+DNS: app.dracarys.test
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % ff
+

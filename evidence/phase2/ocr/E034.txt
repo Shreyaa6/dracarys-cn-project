@@ -1,0 +1,80 @@
+Content-Type: application/json
+Content-Length: 32
+Connection: keep-alive
+X-Backend: A
+Cache-Control: max-ag
+
+: "dracarys-vi"
+sdge: standby
+
+% Connection #@ to host app.dracarys.test left intact
+{tbackend": "A", "status": "ok" }
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % for i in {1..6}; do
+echo “Request $i"
+curl -s$ --connect-timeout 5
+=-resolve app.dracarys.test
+=D = -0 /dev/null \
+https: //app.dracarys.test:8443/api/status \
+| grep -Ei '*HTTP/|*X-Backend: | *X-Edge:'
+sleep 1
+[done
+Request 1
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: standby
+Request 2
+HTTP/2.1 208 OK
+X-Backend: A
+X-Edge: standby
+Request 3
+HTTP/2.1 208 Ok
+X-Backend: B
+X-Edge: standby
+Request 4
+HTTP/1.1 260 OK
+X-Backend: A
+X-Edge: standby
+Request 5
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: standby
+Request 6
+HTTP/2.1 208 OK
+
+max-time 15 \
+443:1.7.38.248 \
+
+standby
+pranjalshukla0Pranjals-MacBook-Pro-3 ~ % date
+
+dig @10.7.3.26 app.dracarys.test A +noall +answer
+dig @10.7.30.248 app.dracarys.test A +noall +answer
+
+curl -sS --connect-timeout 5 --max-time 15 \
+=D - -0 /dev/null \
+https: //app.dracarys.test:8443/api/status \
+| grep -Ei '*HTTP/|*X-Backend: | "X-Edge:'
+Tue Nov 24 19:11:10 IST 2026
+
+<<>> DiG 9.10.6 <<>> @10.7.3.26 app.dracarys.test A +noall +answer
+(1 server found)
+
+global options: +cmd
+
+app.dracarys.test. 30 IN A 10.7.12.197
+
+<<>> DiG 9.10.6 <<>> @10.7.30.248 app.dracarys.test A +noall +answer
+(1 server found)
+
+‘global options: +ond
+
+app.dracarys.test. 30 IN A 10.7.12.197
+
+HTTP/1.1 260 OK
+
+X-Backend: B
+
+X-Edge: primary
+
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % lf
+

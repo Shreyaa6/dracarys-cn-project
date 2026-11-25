@@ -1,0 +1,74 @@
++» date '+%H:9M:%S'
+dig @10.7.3.26 app.dracarys.test A +noall +answer
+dig @10.7.30.248 app.dracarys.test A +noall +answer
+
+for i in {1..6}; do
+echo “Request $i"
+curl -s$ --connect-timeout 5 --max-time 15 \
+-D = -o /dev/null \
+-w ‘Connected IP: %{remote_
+https: //app.dracarys.test
+| grep -Ei '*HTTP/|*X-Backend: |
+sleep 1
+(done
+20:11:14
+
+P\n" \
+j443/api/status \
+Edge: | "Connected IP:*
+
+j <<>> DIG 9.10.6 <<>> @10.7.3.26 app.dracarys.test A +noall +answer
+(4 server found)
+
+global options: +omd
+
+app.dracarys. test. 30 IN A 10.7.12.197
+
+<<>> DiG 9.10.6 <<>> 010.7.38.248 app.dracarys.test A +noall +answer
+(4 server found)
+
+ij global options: +cmd
+app.dracarys. test. 30 IN A 10.7.12.197
+Request 1
+
+HTTP/4.1 200 OK
+
+X-Backend: B
+
+X-Edge: primary
+Connected IP: 10.7.12.197
+Request 2
+
+HTTP/4.4 200 OK
+X-Backend: A
+
+X-Edge: primary
+Connected IP: 10.7.12.197
+Request 3
+
+HTTP/1.1 200 Ok
+X-Backend: B
+
+X-Edge: primary
+Connected IP: 10.7.12.197
+Request 4
+
+HTTP/4.4 260 OK
+X-Backend: A
+
+X-Edge: primary
+Connected IP: 10.7.12.197
+Request 5
+
+HTTP/4.4 200 OK
+
+X-Edge: primary
+Connected IP: 10.7.12.197
+Request 6
+
+HTTP/4.4 200 OK
+
+X-Backen
+X-Edge: primary
+Connected IP: 10.7.12.197
+

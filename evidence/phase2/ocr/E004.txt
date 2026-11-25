@@ -1,0 +1,96 @@
+ALTQ related functions disabled
+
+scrub-anchor "com.apple/*" all fragment reassemble
+anchor "com.apple/*" all
+{meghna@Meghnas-MacBook-Pro ~ % cat /etc/pf.conf
+
+Default PF configuration file.
+
+This file contains the main ruleset, which gets automatically loaded
+
+at startup. PF will not be automatically enabled, however. Instead,
+
+each component which utilizes PF is responsible for enabling and disabling
+PF via -E and -X as documented in pfctl(8). That will ensure that PF
+
+is disabled only when the last enable reference is released.
+
+Care must be taken to ensure that the main ruleset does not get flushed,
+as the nested anchors rely on the anchor point defined here. In addition,
+to the anchors loaded by this file, some system services would dynamically
+insert anchors into the main ruleset. These anchors will be added only when
+the system service is used and would removed on termination of the service.
+
+See pf.conf(5) for syntax.
+
+HHRAARRRR ERE RAE EE
+
+#
+
+# com.apple anchor point
+
+#
+
+scrub-anchor "com.apple/*"
+
+nat-anchor "com.apple/*"
+
+rdr-anchor "com.apple/x*"
+
+dummynet-anchor "com.apple/*"
+
+anchor "com.apple/*"
+
+load anchor "com.apple" from "/etc/pf.anchors/com.apple"
+
+[meghna@Meghnas-MacBook-Pro ~ % sudo cp -p /etc/pf.conf /etc/pf.conf.dracarys-before
+(Password:
+
+meghna@Meghnas-MacBook-Pro ~ % sudo tee /etc/pf.anchors/dracarys > /dev/null <<'EOF'
+# Allow the primary nginx edge to reach Backend A
+
+pass in quick on en@ inet proto tcp from 1@.7.12.197 to 10.7.3@.248 port 30@1 flags S/SA keep state
+
+# Block other LAN clients from directly reaching Backend A
+
+block drop in quick on en@ inet proto tcp from any to 10.7.3@.248 port 3001
+(EOF
+
+meghna@Meghnas-MacBook-Pro ~ % sudo tee -a /etc/pf.conf > /dev/null <<'EOF'
+
+# Dracarys project backend isolation
+
+anchor “dracarys"
+
+load anchor “dracarys" from "/etc/pf.anchors/dracarys"
+
+(EOF
+
+{meghna@Meghnas-MacBook-Pro ~ % sudo pfctl -vnf /etc/pf.conf
+pfctl: Use of -f option, could result in flushing of rules
+present in the main ruleset added by the system at startup.
+See /etc/pf.conf for further details.
+
+scrub-anchor “/: all fragment reassemble
+nat-anchor "/*" all
+
+rdr-anchor "/x" all
+
+anchor "/** all
+
+anchor "dracarys" all
+
+dummynet-anchor "/*" all
+
+Loading anchor com.apple from /etc/pf.anchors/com. apple
+anchor "/*" all
+anchor “/** all
+
+Loading anchor dracarys from /etc/pf.anchors/dracarys
+
+pass in quick on en@ inet proto tcp from 1@.7.12.197 to 10.7.3@.248 port
+block drop in quick on en@ inet_proto tcp from any to 10.7.30.248 port =
+meghna@Meghnas-MacBook-Pro ~ % ff
+
+= 3001 flags S/SA keep state
+3001

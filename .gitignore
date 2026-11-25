@@ -35,3 +35,9 @@ __pycache__/
 venv/
 .venv/
 env/
+
+# Private deployment directories and TLS session secrets
+dracarys-private/
+dracarys-private-*/
+*.keylog
+sslkeylog*

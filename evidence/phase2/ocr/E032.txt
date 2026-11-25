@@ -1,0 +1,80 @@
+out "SHOME/Downloads/standby.crt* \
+
+~days 98 \
+
+=sha256 \
+| -extfile "SHOME/Downloads/standby-ext.cnf*
+Certificate request self-signature ok
+subject=CN=app.dracarys.test
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % openssl verify \
+
+=CAfile /usr/local/etc/nginx/certs/dracarys-ca.crt \
+| ~/Downloads/standby.crt
+/Users/pranjalshukla/Downloads/standby.crt: OK
+pranjalshuklaGPranjals-MacBook-Pro-3 ~ % openssl x609 -in ~/Downloads/standby.crt \
+| =noout -subject -issuer -dates -ext subjectAltName
+subject=CN=app.dracarys.test
+
+racarys Local CA
+125:06 2026 GMT
+
+X509v3 Subject Alternative Name:
+DNS:app.dracarys.test
+(pranjalshukla@Pranjals-MacBook-Pro-3 ~ % open -R ~/Downloads/standby.crt
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % curl -v ~-connect-timeout 5 —-max-time 15 \
+=-resolve app.dracarys. test :8443:10.7.30.248 \
+| https://app.dracarys.test:8443/api/status
+Added app.dracarys.test:8443:10.7.30.248 to DNS cache
+Hostname app.dracarys.test was found in DNS cache
+Trying 10.7.30.248:8443...
+Connected to app.dracarys.test (10.7.30.248) port 8443
+ALPN: curl offers h2,http/1.1.
+(304) (OUT), TLS handshake, Client hello (1):
+CAfile: /etc/ssi/cert.pem
+CApath: none
+(304) (IN), TLS handshake, Server hello (2):
+(304) (IN), TLS handshake, Unknown (8):
+(304) (IN), TLS handshake, Certificate (11):
+(304) (IN), TLS handshake, CERT verify (15):
+(304) (IN), TLS handshake, Finished (20):
+(304) (OUT), TLS handshake, Finished (20):
+SSL connection using TLSv1.3 / AEAD-CHACHA2@-POLY13@5-SHA256 / [blank] / UNDEF
+ALPN: server accepted http/1.1
+Server certificate:
+subject: CNeapp.dracarys.test
+start date: Nov 24 13:25:06 2026 GMT
+expire date: Feb 22 13:25:06 2027 GMT
+subjectAltName: host "app.dracarys.test" matched cert's "app.dracarys.test™
+issuer: CN=Dracarys Local CA
+SSL certificate verify ok.
+using HTTP/1.x
+GET /api/status HTTP/1.1
+Host: app.dracarys.test:8443
+User-Agent: curl/8.7.1
+Accept: */*
+
+Request completely sent off
+HTTP/1.1 200 Ok
+
+Server: nginx/1.31.10
+
+Date: Tue, 24 Nov 2026 13:34:53 GMT
+Content-Type: application/json
+Content-Length: 32
+
+Connection: keep-alive
+
+X-Backend: A
+
+Cache-Control: max-age=60
+
+ETag: “dracarys-v1"
+
+X-Edge: standby
+
+RRAARRRRARAEVVVVV ERE E RK HEE EERE REE REE EEE
+
+% Connection #@ to host app.dracarys.test left intact
+{*backend": "A", "status": "ok" }
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % lf
+

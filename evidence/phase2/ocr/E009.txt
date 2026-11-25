@@ -1,0 +1,97 @@
+==> Successfully started “dnsmasq’ (label: sh.brew.dnsmasq)
+meghna@Meghnas-MacBook-Pro dracarys-private % sudo cp -p /opt/homebrew/etc/dnsmasq.conf \
+/opt/homebrew/etc/dnsmasq.conf.before-tt1-repeat
+
+sudo sed -i '' '/*host-record=tt1\.dracarys\.test,/d' \
+/opt/homebrew/etc/dnsmasq.conf
+
+printf '\nhost-record=ttl.dracarys.test,10.7.12.197,120\n' \
+| sudo tee -a /opt/homebrew/etc/dnsmasq. conf
+
+sudo /opt/homebrew/opt/dnsmasq/sbin/dnsmasq \
+
+--test -C /opt/homebrew/etc/dnsmasq.conf \
+{ -7 '/opt/homebrew/etc/dnsmasq.d,*.conf'
+(Password:
+
+host-record=ttl.dracarys.test,10.7.12.197,120
+
+dnsmasq: syntax check OK.
+
+({meghna@Meghnas-MacBook-Pro dracarys-private % sudo brew services restart dnsmasq
+
+Stopping “dnsmasq*... (might take a while)
+
+Successfully stopped “dnsmasq® (label: sh.brew.dnsmasq)
+
+Warning: Taking root:admin ownership of some dnsmasq paths:
+/opt/homebrew/Cellar/dnsmasq/2.93/sbin
+/opt/homebrew/Cellar/dnsmasq/2.93/sbin/dnsmasq
+/opt/homebrew/opt/dnsmasq
+/opt/homebrew/opt/dnsmasq/sbin
+/opt/homebrew/var/homebrew/1linked/dnsmasq
+
+This will require manual removal of these paths using ‘sudo rm’ on
+
+brew upgrade/reinstall/uninstall.
+
+Root services will run Homebrew-installed software as root by default. Only use
+
+root services if you trust all users who can write to your Homebrew installation.
+
+==> Successfully started “dnsmasq’ (label: sh.brew.dnsmasq)
+
+meghna@Meghnas-MacBook-Pro dracarys-private % sudo sed -i '' \
+'s|*host-record=ttl.dracarys.test,10.7.12.197,120$|host-record=tt1.dracarys.test,10.7.30.248,120|' \
+/opt/homebrew/etc/dnsmasq.conf
+
+sudo brew services restart dnsmasq
+
+[date '+%H:%M:%S'
+
+Stopping “dnsmasq’... (might take a while)
+
+> Successfully stopped “dnsmasq’ (label: sh.brew.dnsmasq)
+
+Warning: Taking root:admin ownership of some dnsmasq paths:
+/opt/homebrew/Cellar/dnsmasq/2.93/sbin
+/opt/homebrew/Cellar/dnsmasq/2.93/sbin/dnsmasq
+/opt/homebrew/opt/dnsmasq
+/opt/homebrew/opt/dnsmasq/sbin
+/opt/homebrew/var/homebrew/linked/dnsmasq
+
+This will require manual removal of these paths using ‘sudo rm* on
+
+brew upgrade/reinstall/uninstall.
+
+Root services will run Homebrew-installed software as root by default. Only use
+
+root services if you trust all users who can write to your Homebrew installation.
+
+Successfully started “dnsmasq™ (label: sh.brew.dnsmasq)
+
+19:38:58
+
+meghna@Meghnas-MacBook-Pro dracarys-private % date '+%H:%M:%S'
+
+dig @10.7.3.26 ttl.dracarys.test A +noall +answer
+
+[dig @10.7.30.248 ttl.dracarys.test A +noall +answer
+
+19:39:02
+
+j <<>> DIG 9.10.6 <<>> @10.7.3.26 ttl.dracarys.test A +noall +answer
+; (1 server found)
+
+global options: +cmd
+
+ttl.dracarys.test. 120 IN A 10.7.12.197
+
+j <<>> DIG 9.10.6 <<>> 010.7.30.248 ttl.dracarys.test A +noall +answer
+(1 server found)
+
+i; global options: +cmd
+
+ttl.dracarys.test. 120 IN A 10.7.30.248
+meghna@Meghnas-MacBook-Pro dracarys-private % JJ
+

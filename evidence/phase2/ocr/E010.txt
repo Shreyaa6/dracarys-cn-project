@@ -1,0 +1,75 @@
+meghna@Meghnas-MacBook-Pro dracarys-private % sudo cp -p /etc/pf.conf.dracarys-before /etc/pf.conf
+(sudo pfctl -nf /etc/pf.conf
+
+(Password:
+
+pfctl: Use of -f option, could result in flushing of rules
+
+present in the main ruleset added by the system at startup
+
+See /etc/pf.conf for further details.
+
+meghna@Meghnas-MacBook-Pro dracarys-private % sudo pfctl -a dracarys -F rules
+sudo pfctl -f /etc/pf.conf
+sudo pfctl -x 5805735418734800585
+
+sudo pfctl -a dracarys -sr
+
+(sudo pfctl -s info
+
+No ALTQ support in kernel
+
+ALTQ related functions disabled
+
+rules cleared
+
+pfctl: Use of -f option, could result in flushing of rules
+present in the main ruleset added by the system at startup.
+See /etc/pf.conf for further details.
+
+No ALTQ support in kernel
+
+ALTQ related functions disabled
+
+No ALTQ support in kernel
+
+ALTQ related functions disabled
+
+pf disabled
+
+No ALTQ support in kernel
+
+ALTQ related functions disabled
+
+No ALTQ support in kernel
+
+ALTQ related functions disabled
+
+Status: Disabled for @ days 00:00:00 Debug: Urgent
+
+State Table Total Rate
+current entries C)
+searches 655971
+inserts 220
+removals 220
+Counters
+match 324565
+bad-offset
+fragment
+short
+normalize
+memory
+bad-timestamp
+congestion
+ip-option 152
+proto-cksum
+state-mismatch
+state—insert
+state-limit
+src-limit
+synproxy
+dummynet
+invalid-port
+meghna@Meghnas-MacBook-Pro dracarys-private %
+
+@222S22SB8S990900°0

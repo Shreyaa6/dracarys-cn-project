@@ -1,0 +1,81 @@
+Added app.dracarys.test:8443:10.7.12.197 to DNS cache
+Hostname app.dracarys.test was found in DNS cache
+Trying 10.7.12.197:8443...
+Connected to app.dracarys.test (10.7.12.197) port 8443
+ALPN: curl offers h2,http/1.1
+(304) (OUT), TLS handshake, Client hello (1):
+CAfile: /etc/ssl/cert.pem
+CApath: none
+(34) (IN), TLS handshake, Server hello (2):
+(304) (IN), TLS handshake, Unknown (8):
+(304) (IN), TLS handshake, Certificate (11):
+(304) (IN), TLS handshake, CERT verify (15):
+(304) (IN), TLS handshake, Finished (20):
+(304) (OUT), TLS handshake, Finished (20):
+SSL connection using TLSv1.3 / AEAD-CHACHA2@-POLY13@5-SHA256 / [blank] / UNDEF
+ALPN: server accepted http/1.1
+Server certificate:
+subject: CNeapp.dracarys.test
+start date: Oct 4 13:20:26 2026 GMT
+expire date: Oct 4 13:20:26 2027 GMT
+subjectAltName: host "app.dracarys.test matched cert's “app.dracarys.test*
+issuer: CN=Dracarys Local CA
+SSL certificate verify ok.
+using HTTP/1.x
+GET /api/status HTTP/1.1
+Host: app.dracarys.test:8443
+User-Agent: curl/8.7.1
+Accept: */*
+
+Request completely sent off
+HTTP/1.1 260 OK
+
+Server: nginx/1.31.6
+
+Date: Tue, 24 Nov 2026 13:52:41 GMT
+Content-Type: application/json
+Content-Length: 32
+
+Connection: keep-alive
+
+X-Backend: A
+
+Cache-Control: max-age=60
+
+ETag: “dracarys-vi"
+
+X-Edge: primary
+
+RARARRRRARREVVVVV EERE RRR E EERE EERE EERE EEE H
+
+* Connection #0 to host app.dracarys.test left intact
+{rbackend": "A", "status": "ok"}E
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % date '+%H:9M::
+dig @10.7.3.26 app.dracarys.test A +noall +answer
+
+(dig @10.7.30.248 app.dracarys.test A +noall +answer
+19:25:02
+
+a
+
+<<>> DiG 9.10.6 <<>> @10.7.3.26 app.dracarys.test A +noall +answer
+(1 server found)
+
+global options: +cmd
+
+app.dracarys.test. 30 IN A 10.7.30.268
+
+<<>> DiG 9.10.6 <<>> @10.7.30.248 app.dracarys.test A ¢noall +answer
+(4 server found)
+Global options: +cmd
+app.dracarys. test. 30 IN A 10.7.12.197
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % for i in {1..12}; do
+date '+xH:%M:%S'
+curl -s$ --connect-timeout 5 --max-time 15 \
+=D = -0 /dev/null \
+-w ‘Connected IP: %{remote_ip}\n' \
+https: //app.dracarys.test:8443/api/status \
+| grep -Ei '*HTTP/|*X-Backend: |*X-Edge: |*Connected IP:
+sleep 5
+[done
+

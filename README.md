@@ -1,268 +1,80 @@
-# Private Network Service Platform
+# Dracarys - Private Network Service Platform
 
-**Course**: Computer Networks  
-**Project Phase**: Phase 1 Final Submission  
-**Team Name**: Dracarys  
+Computer Networks course project · Phase 1 foundation + Phase 2 hardening and recovery
+Deployment evidence: **24 November 2026** · Repository finalization: **25 November 2026**
 
----
+A local DNS → TCP → TLS → nginx → Python service on three Macs and a Raspberry Pi. Phase 2 adds backup DNS, TTL experiments, backend isolation, passive upstream failover and manual DNS-based edge migration. The application remains deliberately small.
 
-## 1. Project Description
+**Submission status:** documentation and supplied evidence are organized. The evidence supports most Phase 2 demonstrations, with explicit qualifications. Primary-DNS-stop proof, a strict simultaneous cached-client/new-client migration comparison, and second-client ownership/configuration confirmation remain open. The faculty challenge and individual viva are pending live evaluation. See the [submission checklist](docs/submission-checklist.md).
 
-The **Private Network Service Platform** is a multi-tier private network architecture deployed across a local area network on heterogeneous devices (macOS and Raspberry Pi Linux). The system demonstrates production networking concepts:
+## Start here
 
-1. **Private Name Resolution**: Private DNS service resolving local domain `app.dracarys.test` via `dnsmasq`.
-2. **Edge Reverse Proxy & TLS Termination**: `nginx 1.31.6` terminating TLSv1.2/TLSv1.3 with a custom Public Key Infrastructure (PKI) Local CA, forwarding traffic to backend pools.
-3. **Round-Robin Load Balancing**: Equal-weight load distribution across heterogeneous backend servers with automated failover.
-4. **Application Backends with HTTP/1.1 Semantics**: Python HTTP servers providing REST endpoints (`/`, `/api/status`), method handling (`GET`, `HEAD`), cache control headers (`Cache-Control: max-age=60`), and conditional revalidation via `ETag` returning `304 Not Modified`.
-5. **Observability & Resilience**: Comprehensive Wireshark packet capture analysis and verified resilience against five distinct network failure modes.
+| Deliverable | Location |
+|---|---|
+| Phase 2 final report | [Canonical Markdown](docs/phase2-report.md) · [PDF](docs/phase2-report.pdf) |
+| Current architecture and protocol flow | [Architecture](docs/architecture.md) |
+| All 57 original screenshots | [Evidence index](evidence/phase2/README.md) · [Offline gallery](evidence/phase2/gallery.html) |
+| Original 32-frame capture | [PCAP](evidence/phase2/pcap/client-dns-https.pcap) · [Frame analysis](docs/packet-capture-analysis.md) |
+| Reconstructed deployment configurations | [Phase 2 bundle](configs/phase2/README.md) |
+| Installation, staged tests and recovery | [Setup / rollback](docs/setup-rollback.md) · [Standby TLS](docs/tls-phase2.md) |
+| Final demonstration and viva | [11-step runbook](docs/demo-runbook.md) |
+| Completion and verification | [Checklist](docs/submission-checklist.md) · [Validation](docs/validation.md) |
+| Phase 1 history | [Original README](README-phase1.md) · [Architecture](docs/architecture-phase1.md) · [Failure tests](docs/failure-tests.md) · [Evidence](evidence/README.md) |
 
----
+GitHub displays the Markdown index directly. To use the gallery, clone/download the repository and open `evidence/phase2/gallery.html` locally.
 
-## 2. Team Members
+## Phase 2 device map
 
-| Name | Role / Machine Responsibility | Enrollment Number |
-| :--- | :--- | :--- |
-| **Shreya Narayani** | Authoritative Private DNS Server (dnsmasq on macOS) | 2401020067 |
-| **Meghna Nair** | Application Backend A (Python HTTPServer on macOS) | 2401010274 |
-| **Pranjal Shukla** | Edge Reverse Proxy, TLS Termination, Load Balancer (nginx on macOS) | 2401010335 |
-| **Ritesh Kumar** | — | 2401010384 |
+| Device | IPv4 | Services |
+|---|---|---|
+| Shreya Mac | 10.7.3.26 | Primary DNS UDP/TCP 53; client |
+| Pranjal Mac | 10.7.12.197 | Primary nginx 1.31.6, HTTP 8080 / HTTPS 8443; client |
+| Meghna Mac | 10.7.30.248 | Backend A TCP 3001; backup DNS 53; temporary standby nginx 1.31.10, 8080/8443 |
+| Raspberry Pi (`isro@isro-desktop`) | 10.7.6.30 | Backend B TCP 3002 on wlan0 |
 
----
-
-## 3. Network Architecture & Machine Inventory
-
-All participating systems operate within a private IPv4 `/19` campus/LAN subnet with a default gateway at `10.7.0.1`.
-
-```text
-                               +----------------------------------+
-                               |           Client Host            |
-                               | (Configured DNS: 10.7.3.26)      |
-                               +-----------------+----------------+
-                                                 |
-                       1. DNS Query (UDP/53)     |  3. HTTPS Request (TCP/8443)
-                       "app.dracarys.test"       |     TLSv1.2 / TLSv1.3
-                                                 |
-                     +---------------------------+---------------------------+
-                     |                                                       |
-                     v                                                       v
-      +-----------------------------+                         +-----------------------------+
-      |       Private DNS Host      |                         |      Edge / Load Balancer   |
-      |          Shreya Mac         |                         |         Pranjal Mac         |
-      |         10.7.3.26           |                         |         10.7.26.65          |
-      |        dnsmasq (en0)        |                         |        nginx 1.31.6         |
-      +-----------------------------+                         +--------------+--------------+
-                     |                                                       |
-                     +-- Resolves to 10.7.26.65                              | Round-Robin Upstream
-                                                                             | Proxy (HTTP)
-                                                     +-----------------------+-----------------------+
-                                                     |                                               |
-                                                     v                                               v
-                                      +-----------------------------+                 +-----------------------------+
-                                      |          Backend A          |                 |          Backend B          |
-                                      |          Meghna Mac         |                 |         Raspberry Pi        |
-                                      |         10.7.22.237         |                 |         10.7.23.235         |
-                                      |          Port: 3001         |                 |       Port: 3002 (wlan0)    |
-                                      |         X-Backend: A        |                 |         X-Backend: B        |
-                                      +-----------------------------+                 +-----------------------------+
-```
-
-### Machine & Service Mapping
-
-| Role | Host Device | IP Address | Subnet / Gateway | Interface | Port(s) | Service | Config / Source Location |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Private DNS** | Shreya Mac | `10.7.3.26` | `/19` (`10.7.0.1`) | `en0` | UDP/53, TCP/53 | `dnsmasq` | `dns/dnsmasq.conf` |
-| **Edge / Proxy** | Pranjal Mac | `10.7.26.65` | `/19` (`10.7.0.1`) | `en0` | 8080 (HTTP), 8443 (HTTPS) | `nginx 1.31.6` | `nginx/nginx.conf` |
-| **Backend A** | Meghna Mac | `10.7.22.237` | `/19` (`10.7.0.1`) | `en0` | 3001 | Python HTTPServer | `~/CN_Project/backend-a/server.py` |
-| **Backend B** | Raspberry Pi | `10.7.23.235` | `/19` (`10.7.0.1`) | `wlan0` | 3002 | Python HTTPServer | `~/CN_Project/backend-b/server.py` |
-
----
-
-## 4. Repository Structure
+Normal `app.dracarys.test` answer: **10.7.12.197, TTL 30 on both DNS servers** (E057). Migration temporarily used 10.7.30.248. The separate `ttl.dracarys.test` experiment used TTL 120. Do not reuse old Phase 1 edge/backend IPs `.26.65`, `.22.237`, `.23.235` for Phase 2.
 
 ```text
-dracarys-cn-project/
-├── .gitignore                  # Excludes private keys (*.key, *.pem), credentials, and caches
-├── README.md                   # Project overview, run guides, and testing manual
-├── backend-a/
-│   └── server.py               # Backend A Python server (port 3001, X-Backend: A)
-├── backend-b/
-│   └── server.py               # Backend B Python server (port 3002, X-Backend: B)
-├── dns/
-│   └── dnsmasq.conf            # dnsmasq configuration (app.dracarys.test -> 10.7.26.65)
-├── nginx/
-│   └── nginx.conf              # Reverse proxy, SSL termination, and load balancing config
-├── tls/
-│   └── README.md               # Dracarys Local CA architecture, trust setup, and key policy
-├── docs/
-│   ├── architecture.md         # Comprehensive system architecture & Wireshark breakdown
-│   └── failure-tests.md        # Fault injection scenarios and formal D3 failover demo
-└── evidence/
-    ├── README.md               # Explanation of packet captures and directory layout
-    ├── dns/                    # Packet captures for DNS resolution
-    ├── tcp/                    # Packet captures for TCP 3-way handshakes
-    ├── tls/                    # Packet captures for TLS 1.2 handshake & encrypted streams
-    ├── load-balancing/         # Round-robin request logs
-    ├── caching/                # ETag and 304 Not Modified validation logs
-    └── failures/               # Resilience testing outputs
+                    +--> Shreya primary DNS .3.26:53
+Client -- DNS ------|
+                    +--> Meghna backup DNS .30.248:53
+Client -- HTTPS ---> Pranjal primary edge .12.197:8443
+                      |-- HTTP --> Meghna A .30.248:3001
+                      +-- HTTP --> Pi B .6.30:3002
+
+Manual DNS cutover: client --> Meghna standby .30.248:8443
+                               |-- HTTP --> local A 127.0.0.1:3001
+                               +-- HTTP --> Pi B .6.30:3002
 ```
 
----
+## Run and verify
 
-## 5. Prerequisites & Environment
+Use the [full host-specific setup](docs/setup-rollback.md) before deploying. On Meghna, from the clone root, run `python3 backend-a/server.py`; on the Pi run `python3 backend-b/server.py`. Each listens on IPv4 `0.0.0.0` at its fixed port. Install the appropriate **Phase 2** DNS/nginx template, use the existing private certificates on the intended hosts, and configure client trust and DNS.
 
-- **Python**: Python 3.8+ (uses standard library modules: `http.server`, `json`)
-- **DNS Server**: `dnsmasq` installed on Shreya Mac (`brew install dnsmasq`)
-- **Edge Server**: `nginx` 1.31.6+ installed on Pranjal Mac (`brew install nginx`)
-- **Diagnostic Tools**: `dig`, `curl`, `wireshark` / `tshark`
+From a configured client on the project LAN:
 
----
-
-## 6. How to Run the Services
-
-### 6.1 Running Backend A (Meghna Mac - `10.7.22.237`)
 ```bash
-# From workspace or home directory on Meghna Mac
-cd ~/CN_Project/backend-a
-python3 server.py
-```
-*Listens on `0.0.0.0:3001`. Emits `X-Backend: A`.*
-
-### 6.2 Running Backend B (Raspberry Pi - `10.7.23.235`)
-```bash
-# On Raspberry Pi terminal (over SSH or local shell)
-cd ~/CN_Project/backend-b
-python3 server.py
-```
-*Listens on `0.0.0.0:3002` on interface `wlan0`. Emits `X-Backend: B`.*
-
-### 6.3 Configuring & Running DNS (`dnsmasq` on Shreya Mac - `10.7.3.26`)
-1. Place `dnsmasq.conf` into `/usr/local/etc/dnsmasq.conf` or run directly with:
-   ```bash
-   sudo dnsmasq -C ./dns/dnsmasq.conf -d
-   ```
-2. The server binds to `127.0.0.1` and `10.7.3.26` on interface `en0`.
-
-### 6.4 Configuring & Running nginx (Pranjal Mac - `10.7.26.65`)
-1. Ensure the TLS certificate is present at `/usr/local/etc/nginx/certs/app.dracarys.test.crt` and the private key is at `/usr/local/etc/nginx/certs/app.dracarys.test.key`.
-2. Validate syntax:
-   ```bash
-   nginx -t -c $(pwd)/nginx/nginx.conf
-   ```
-3. Start or reload nginx:
-   ```bash
-   nginx -c $(pwd)/nginx/nginx.conf
-   # Or reload if already running:
-   nginx -s reload
-   ```
-
----
-
-## 7. Verification & Testing Guide
-
-Run the following commands from any client machine connected to the same subnet:
-
-### 7.1 DNS Name Resolution Testing
-Test resolution directly against the private DNS server:
-```bash
-# Query the private DNS server directly
-dig @10.7.3.26 app.dracarys.test
-```
-**Expected Output**:
-`app.dracarys.test` resolves with an `A` record pointing to `10.7.26.65`.
-
-If the client's network interface DNS server is set to `10.7.3.26`:
-```bash
-dig app.dracarys.test
-```
-
-### 7.2 HTTPS & TLS Connectivity Testing
-Test secure TLS connectivity. Because **Dracarys Local CA** is trusted in the client trust store, **no `-k` flag is needed**:
-```bash
-curl -v https://app.dracarys.test:8443
-```
-**Expected Output**:
-- Verification: `SSL certificate verify ok`
-- HTTP status: `HTTP/1.1 200 OK`
-- JSON payload: `{"message": "Private Network Service", "backend": "A"}` (or `"B"`)
-
-Inspect headers on `/api/status`:
-```bash
-curl -sI https://app.dracarys.test:8443/api/status
-```
-**Expected Output**:
-```http
-HTTP/1.1 200 OK
-Server: nginx/1.31.6
-Content-Type: application/json
-X-Backend: A
-ETag: "dracarys-v1"
-Cache-Control: max-age=60
-```
-
-### 7.3 Round-Robin Load Balancing Testing
-Verify that nginx alternates requests between Backend A (`10.7.22.237:3001`) and Backend B (`10.7.23.235:3002`):
-```bash
+dig @10.7.3.26 app.dracarys.test A +noall +answer
+dig @10.7.30.248 app.dracarys.test A +noall +answer
+curl -v --connect-timeout 5 --max-time 15 https://app.dracarys.test:8443/api/status
 for i in {1..6}; do
-  echo "---- Request $i ----"
-  curl -s -D - https://app.dracarys.test:8443/api/status -o /dev/null | grep -E 'HTTP/|X-Backend'
-done
-```
-**Expected Output**:
-```text
----- Request 1 ----
-HTTP/1.1 200 OK
-X-Backend: A
----- Request 2 ----
-HTTP/1.1 200 OK
-X-Backend: B
----- Request 3 ----
-HTTP/1.1 200 OK
-X-Backend: A
----- Request 4 ----
-HTTP/1.1 200 OK
-X-Backend: B
----- Request 5 ----
-HTTP/1.1 200 OK
-X-Backend: A
----- Request 6 ----
-HTTP/1.1 200 OK
-X-Backend: B
+  curl -sS -D - -o /dev/null --max-time 15 https://app.dracarys.test:8443/api/status
+ done
 ```
 
-### 7.4 Caching & Conditional Revalidation (`ETag` / `304 Not Modified`)
-Demonstrate HTTP conditional request validation using `If-None-Match`:
-```bash
-curl -i -H 'If-None-Match: "dracarys-v1"' https://app.dracarys.test:8443/api/status
-```
-**Expected Output**:
-```http
-HTTP/1.1 304 Not Modified
-Server: nginx/1.31.6
-ETag: "dracarys-v1"
-Cache-Control: max-age=60
-X-Backend: A
-```
-*(Notice: No JSON response body is returned, confirming bandwidth-saving revalidation).*
+Expected normal behavior: trusted TLS without `-k`, HTTP/1.1 200, `X-Edge: primary`, responses from both A and B. These are reproduction expectations; the historical evidence is linked in the report. Direct Python responses are HTTP/1.0. Offering h2 does not mean HTTP/2 was negotiated.
 
----
+Firewall isolation was **rolled back** after testing. Final observed state permits direct backend access. The edge migration is manual, backend failover is passive, and shared host roles remain correlated failure risks. The unchanged backend's shared fixed ETag is a simplified conditional-request demonstration, not representation-correct caching across different A/B bodies.
 
-## 8. Failure Demonstrations Summary
+## Team
 
-A comprehensive failure matrix was executed across all tiers (documented in detail in [docs/failure-tests.md](docs/failure-tests.md)):
-1. **Wrong DNS Server**: Lookup failed/timed out while IP layer ping remained functional.
-2. **Wrong DNS Record**: Domain pointed to non-routable `192.0.2.123`; DNS succeeded, but TCP handshake timed out.
-3. **One Backend Down (Formal D3 Demo)**: Backend B stopped; demonstrated requests continued returning HTTP 200 from Backend A. Alternating responses resumed after Backend B was restarted.
-4. **Both Backends Down**: nginx returned `HTTP/1.1 502 Bad Gateway`.
-5. **Wrong Destination Port**: Requests to port `8444` were rejected with TCP RST (`Connection refused`).
+| Member | Enrollment | Recorded responsibility |
+|---|---|---|
+| Shreya Narayani | 2401020067 | Primary DNS / client; Pi SSH access in evidence |
+| Meghna Nair | 2401010274 | Backend A, backup DNS and temporary standby edge host |
+| Pranjal Shukla | 2401010335 | Primary edge, TLS and client testing |
+| Ritesh Kumar | 2401010384 | Team member; individual implementation attribution not supplied |
 
----
+Device roles are evidence-based; they are not a complete individual contribution ledger. Each member must understand the whole system for viva.
 
-## 9. Security & Key Management Policy
-
-> [!IMPORTANT]
-> **Zero Private Key Policy**:
-> In compliance with strict security practices:
-> - **No private keys** (`*.key`, `*.pem`, `*.p12`) are ever committed or tracked in this repository.
-> - The repository's `.gitignore` file enforces exclusion of all cryptographic secret patterns.
-> - Server private keys remain secured at `/usr/local/etc/nginx/certs/app.dracarys.test.key` on the proxy host.
-> - All certificates are issued under our internal **Dracarys Local CA** and trusted via the operating system's local keychain.
+Public CA certificate: [tls/dracarys-ca.crt](tls/dracarys-ca.crt). Private keys and session keylogs must never be committed. Historical Phase 1 configuration files remain unchanged; all Phase 2 templates are under `configs/phase2/`.

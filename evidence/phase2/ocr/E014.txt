@@ -1,0 +1,65 @@
+" @ @ © BM pranjalshukla —-zsh—197%54
+
+_
+
+c
+Z
+
+~—-zsh ~—-zsh
+
+15:21:33
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+15:21:36
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+15:21:39
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+15:21:42
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+15:21:45
+
+name: ttl.dracarys.test
+
+ip_address: 10.7.12.197
+
+pranjalshukla@Pranjals—MacBook-Pro-3 ~ % date '+%H:%M:%S'
+
+15:32:11
+
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % dig @10.7.3.26 ttl.dracarys.test A +noall +answer
+
+7 <<>> DiG 9.10.6 <<>> 010.7.3.26 ttl.dracarys.test A +noall +answer
+; (1 server found)
+
+77 global options: +cmd ter
+ttl.dracarys.test. 30 IN A 10.7.30.248
+pranjalshukla@Pranjals—MacBook-Pro-3 ~ % dig @10.7.30.248 ttl.dracarys.test A +noall +answer
+7 <<>> DIG 9.10.6 <<>> 010.7.30.248 ttl.dracarys.test A +noall +answer F
+; (1 server found)
+;7 global options: +cmd ted
+ttl.dracarys.test. 30 IN A 10.7.30.248 vs
+[pranjalshukla@Pranjals-MacBook-Pro-3 ~ % dscacheutil -q host -a name ttl.dracarys.test ]
+name: ttl.dracarys.test
+ip_address: 10.7.30.248 )
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo dscacheutil -flushcache
+
+ish
+(Password: i
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo killall -HUP mDNSResponder
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % date '+%H:%M:%S! q
+15:34:01
+[pranjalshukla@Pranjals-MacBook-Pro-3 ~ % dscacheutil -q host -a name ttl.dracarys.test lp
+
+name: ttl.dracarys.test 7
+ip_address: 10.7.30.248
+
+pranjalshukla@Pranjals—MacBook-Pro-3 ~ % ff
+
+¥ i er i ae

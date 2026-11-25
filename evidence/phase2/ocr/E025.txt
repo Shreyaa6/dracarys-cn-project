@@ -1,0 +1,76 @@
+FP $8 Q B_ Te24Nov 6:32PM
+
+@ Terminal Shell Edit View Window Help ce
+© @ @ WW shreyanarayani — isro@isro-desktop: ~ — ssh isro@10.7.6.30 — 213x64
+
+udp dport 41641 counter packets @ bytes @ accept
+}
+
+chain ts-forward {
+iifmame "tailscaleo" counter packets @ bytes @ meta mark set mark and OxffOffff xor 6x40000
+meta mark & @x0@ffe000 == 0x00040000 counter packets @ bytes @ accept
+oifname "tailscaleo" counter packets @ bytes @ accept
+
+}
+
+chain INPUT {
+type filter hook input priority filter; policy accept;
+counter packets 274 bytes 21469 jump ts-input
+}
+,
+# Warning: table ipé nat is managed by iptables-nft, do not touch!
+table ip6 nat {
+chain DOCKER {
+}
+
+chain PREROUTING {
+type nat hook prerouting priority dstnat; policy accept;
+fib daddr type local counter packets @ bytes @ jump DOCKER
+}
+
+chain OUTPUT {
+type nat hook output priority dstnat; policy accept;
+ip6 daddr != ::1 fib daddr type local counter packets @ bytes @ jump DOCKER
+
+}
+
+chain ts-postrouting {
+meta mark & @xooffe00e
+xt target "MASQUERADE"
+}
+
+@x00040000 counter packets @ bytes @ # Warning: XT target MASQUERADE not found
+
+chain POSTROUTING {
+type nat hook postrouting priority srenat; policy accept;
+counter packets 5 bytes 2125 jump ts-postrouting
+}
+y
+# Warning: table ip mangle is managed by iptables-nft, do not touch!
+table ip mangle {
+chain PREROUTING {
+type filter hook prerouting priority mangle; policy accept;
+ct state related,established ct mark and @xff@ee0 != @x@ counter packets 3455 bytes 468034 meta mark set ct mark and Oxffee00
+?
+
+chain OUTPUT {
+type route hook output priority mangle; policy accept;
+ct state new meta mark & @x@@ffeeee != @xeeee2000 counter packets 355 bytes 27947 ct mark set mark and @xffeeea
+
+}
+}
+# Warning: table ip6 mangle is managed by iptables-nft, do not touch!
+table ip6 mangle {
+chain PREROUTING {
+type filter hook prerouting priority mangle; policy accept;
+ct state related, established ct mark and @xffeeee != @x@ counter packets @ bytes @ meta mark set ct mark and extte000
+
+,
+
+chain OUTPUT {
+type route hook output priority mangle; policy accept;
+ct state new meta mark & @x@ffeeee != @xee02000 counter packets @ bytes @ ct mark set mark and exffooea
+
+>
+>
+isro@isro-desktop:~$

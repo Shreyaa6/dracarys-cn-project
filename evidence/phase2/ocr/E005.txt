@@ -1,0 +1,102 @@
+# See pf.conf(5) for syntax.
+#
+
+#
+# com.apple anchor point
+
+#
+
+scrub-anchor "com.apple/*"
+nat-anchor "com.apple/*"
+rdr-anchor "com.apple/x"
+dummynet-anchor "com.apple/*"
+anchor "com.apple/*"
+load anchor "com.appl
+
+from "/etc/pf.anchors/com. apple"
+
+{meghna@Meghnas-MacBook-Pro ~ % sudo cp -p /etc/pf.conf /etc/pf.conf.dracarys-before
+
+(Password:
+
+meghna@Meghnas-MacBook-Pro ~ % sudo tee /etc/pf.anchors/dracarys > /dev/null <<'EOF'
+
+# Allow the primary nginx edge to reach Backend A
+
+pass in quick on en@ inet proto tcp from 10.7.12.197 to 10.7.30.248 port 3001 flags S/SA keep state
+
+# Block other LAN clients from directly reaching Backend A
+
+block drop in quick on en@ inet proto tcp from any to 10.7.30.248 port 3001
+
+(EOF
+meghna@Meghnas-MacBook-Pro ~ % sudo tee -a /etc/pf.conf > /dev/null <<'EOF'
+# Dracarys project backend isolation
+
+anchor “dracarys"
+
+load anchor “dracarys" from "/etc/pf.anchors/dracarys"
+
+(EOF
+
+{meghna@Meghnas-MacBook-Pro ~ % sudo pfctl -vnf /etc/pf.conf
+pfctl: Use of -f option, could result in flushing of rules
+present in the main ruleset added by the system at startup.
+See /etc/pf.conf for further details.
+
+scrub-anchor "/x" all fragment reassemble
+nat-anchor “/** all
+rdr-anchor "/*" all
+anchor “/** all
+anchor “dracary:
+dummynet-anchor
+
+all
+/*" all
+
+Loading anchor com.apple from /etc/pf.anchors/com.apple
+anchor "/*" all
+anchor "/*" all
+
+Loading anchor dracarys from /etc/pf.anchors/dracarys
+pass in quick on en@ inet proto tcp from 10.7.12.197 to 10.7.30.248 port =
+
+3001 flags S/SA keep state
+
+block drop in quick on en@ inet proto tcp from any to 10.7.30.248 port = 3001
+
+[meghna@Meghnas-MacBook-Pro ~ % ipconfig getifaddr en@
+10.7.30.248
+
+{meghna@Meghnas-MacBook-Pro ~ % sudo pfctl -f /etc/pf.conf
+pfctl: Use of -f option, could result in flushing of rules
+present in the main ruleset added by the system at startup.
+See /etc/pf.conf for further details.
+
+No ALTQ support in kernel
+
+ALTQ related functions disabled
+
+{meghna@Meghnas-MacBook-Pro ~ % sudo pfctl -E
+
+No ALTQ support in kernel
+
+ALTQ related functions disabled
+
+pf enabled
+
+Token : 5805735418734800585
+
+{meghna@Meghnas-MacBook-Pro ~ % sudo pfctl -a dracarys -sr
+
+No ALTQ support in kernel
+
+ALTQ related functions disabled
+
+pass in quick on en@ inet proto tcp from 10.7.12.197 to 10.7.3@.248 port
+block drop in quick on en@ inet_proto tcp from any to 10.7.30.248 port =
+meghna@Meghnas-MacBook-Pro ~ % ff
+
+3001
+
+3001 flags S/SA keep state

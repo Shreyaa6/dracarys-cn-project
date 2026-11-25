@@ -1,0 +1,53 @@
+ls» printf ‘\nhost-recordett1.dracarys.test,10.7.12.197,30\n' | sudo ti
+
+=a /opt/honebrow/ete/dnsmasa.conf
+host-recordatt1.dracarys.test,10.7.12.197,30
++ = sudo /opt/honebrew/opt/dnsaasa/sbin/dnsmasq
+[dnsmasa: syntax check OK.
+‘=~ sudo brow services restart dnsmasq
+Stopping “dnsnasa’...
+‘Successfully stopped “dnsmasq)
+warning: Taking roottadnin onnership of sone dnenasq paths:
+/opt/honebren/Celiar/dnsnasq/2.93/sbin
+‘opt /honebren/Ce1ar/dnsnasa/2.93/sbin/dnsmasq
+‘/opt/nonebrew/opt /dnsmasq
+‘Jopt/honebrew/opt/dnsnasq/sbin
+‘opt /nonebren/var /honebrew/1inked/dnsnasq
+this will require manual renoval of these paths using “sudo 1
+brew upgrade/reinstali/uninstall.
+Root services will run Honebrew-installed soft
+root services if you trust all users who
+‘Successfully start
++ = clear
+
+test -C /opt/nonebrew/etc/dnsmasa.conf -7 ' /opt/honebrew/etc/dnsnasq.d,*.conf”
+
++ ~ sudo sed ~i ‘+ ‘s/host-record=ttl.dracarys.test,10.7.12.197,30/host-record=ttl.dracarys.test,10.7.30-248,30/' /opt/honebrew/etc/dnsmasq. conf
+[> = audo brew services restart dnemasq
+Stopping ‘dnsnasa’... (might take a while)
+
+> Successfully stopped “dnsnasq’ (abel: sh.brew.dnsnasq)
+
+Warning: Taking root:admin ownership of sone dnsmasq paths:
+
+" Jopt/honebrew/Cellar/dnsnasa/2.93/sbin
+opt /nonebren/Celar/énsnasq/2.93/sbin/a
+opt /nonebrew/opt /dnsmasa
+‘/opt/honebren/opt /dnsnasa/sbin
+‘/opt/honebrew/var/honebrew/1inked/dnsmasq
+
+this will require manual renoval of these paths using “sudo ra° on
+
+brew Upgrade/reinstall/uninstall.
+
+Root services will run Honebrew-installed software as root by default. Only u
+
+root services if you trust all users who can write to your Honebrew installation.
+“Successfully started “dnenasq’ (label: sh.brew.dns
+
+= curl -i —connect-tineout 3 —max-tine 5 htt
+
+curl: (28) Failed to connect to 10.7.30.248 port 30
+
+hed
+

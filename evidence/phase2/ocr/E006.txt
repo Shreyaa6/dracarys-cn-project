@@ -1,0 +1,12 @@
+[Password:
+[meghna@Meghnas—MacBook-Pro
+[meghna@Meghnas—MacBook-Pro
+[meghna@Meghnas—MacBook-Pro
+meghna@Meghnas-—MacBook-Pro
+
+% brew list --versions nginx
+
+% ps ax -o pid,command | grep '[n]ginx'
+
+% sudo lsof -nP -iTCP:8080 -iTCP:8443 -sTCP:LISTEN
+|

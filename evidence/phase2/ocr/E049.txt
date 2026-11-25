@@ -1,0 +1,72 @@
+for i in {1..40)
+date '+5H:904:%S'
+dscacheutil -q host -a name ttl.dracarys.test
+sleep 5
+
+[done
+
+(Password:
+
+19:38:20
+
+name: ttl.dracarys.test
+
+ip_address: 10.7.12.197
+
+do
+
+19:38:26
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:38:31
+ttl.dracarys.test
+dress: 10.7.12.197
+
+19:38:36
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:38:41
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:38:46
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:38:51
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:38:56
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:39:01
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:39:06
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:39:11
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:39:16
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:39:21
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:39:26
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+19:39:31
+name: ttl.dracarys.test
+ip_address: 10.7.12.197

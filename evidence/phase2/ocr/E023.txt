@@ -1,0 +1,75 @@
+@ Terminal Shell Edit View Window Help € 8 @ F 8 Q SB Tue 24Nov 6:31PM
+
+© @ @ W shreyanarayani — isro@isro-desktop: ~ — ssh isro@10.7.6.30 — 213x64
+isro@isro-desktop:~$ ip -4 addr
+Jo: <LOOPBACK, UP, LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+inet 127.0.0.1/8 scope host lo
+
+valid_Ift forever preferred_1ft forever
+wlan@: <BROADCAST, MULTICAST, UP, LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+inet 10.7.6.30/19 brd 10.7.31.255 scope global dynamic noprefixroute wland
+
+valid_Ift 58913sec preferred_1ft 58913sec
+4: tailscale®: <POINTOPOINT, MULTICAST, NOARP, UP, LOWER_UP> mtu 128 qdisc fq_codel state UNKNOWN group default qlen 500
+
+inet 100.74.154.30/32 scope global tailscaleé
+
+valid_1ft forever preferred_Ift forever
+
+5: docker@: <NO-CARRIER, BROADCAST, MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default
+
+inet 172.17.@.1/16 brd 172.17.255.255 scope global docker®
+
+valid_ift forever preferred_ift forever
+isro@isro-desktop:-$ sudo ufw status
+Status: inactive
+isro@isro-desktop:~$ sudo iptables -S
+=P INPUT ACCEPT
+‘=P FORWARD DROP
+-P OUTPUT ACCEPT
+-N DOCKER
+-N_DOCKER-BRIDGE
+-N DOCKER-CT
+=N_DOCKER-FORWARD
+-N_DOCKER-INTERNAL
+-N DOCKER-USER
+-N ts-forward
+-N ts-input
+“A INPUT ~j ts~input
+A FORWARD -j ts-forward
+A FORWARD -j DOCKER-USER
+A FORWARD -3 DOCKER-FORWARD
+“A DOCKER | -i docker@ -o docker@ -j DROP
+A DOCKER-BRIDGE -o docker@ -j DOCKER
+A DOCKER-CT -o docker@ -m conntrack --ctstate RELATED, ESTABLISHED —j ACCEPT
+A DOCKER-FORWARD -j DOCKER-CT
+A DOCKER-FORWARD -} DOCKER-INTERNAL
+“A DOCKER-FORWARD -j DOCKER-BRIDGE
+=A DOCKER-FORWARD -i docker® -j ACCEPT
+“A ts-forward i tailscale@ -j MARK —-set-xmark @x40000/@xffe000
+“A ts-forward -m mark ~-mark @x40000/0xff0000 ~j ACCEPT
+“A ts-forward -s 100.64.0.0/10 -o tailscaled -j DROP
+-A ts-forward -0 tailscaled ~j ACCEPT
+“A ts-input -s 100.74.154.38/32 -i lo -j ACCEPT
+mA
+-A ACCEPT
+“A ts-input -s 100.115.92.0/23 | -i tailscaled -j RETURN
+“A ts-input -s 100.64.0.0/18 ! -i tailscale@ -j DROP
+isro@isro-desktop:~$ sudo nft list ruleset
+# Warning: table ip filter is managed by iptables-nft, do not touch!
+table ip filter {
+chain DOCKER {
+{ iifname != "docker@" oifname “docker®" counter packets @ bytes @ drop
++
+
+chain DOCKER-FORWARD <
+counter packets @ bytes @ jump DOCKER-CT
+counter packets @ bytes @ jump DOCKER-INTERNAL
+counter packets @ bytes @ jump DOCKER-BRIDGE
+iifmame "docker@" counter packets @ bytes @ accept
+}
+
+chain DOCKER-BRIDGE {
+oifname "docker®" counter packets @ bytes @ jump DOCKER
+}
+

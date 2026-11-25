@@ -1,0 +1,23 @@
+pranjalshukla@Pranjals—MacBook-Pro-3 ~ % date '+%H:%M:%S'
+dig @10.7.3.26 ttl.dracarys.test A +noall +answer
+
+[dig @10.7.30.248 ttl.dracarys.test A +noall +answer
+19:36:11
+
+<<>> DiG 9.10.6 <<>> 010.7.3.26 ttl.dracarys.test A +noall +answer
+(1 server found)
+
+77 global options: +cmd
+
+ttl.dracarys.test. 120 IN A 10.7.12.197
+
+<<>> DiG 9.10.6 <<>> @10.7.30.248 ttl.dracarys.test A +noall +answer
+(1 server found)
+
+i? global options: +cmd
+
+ttl.dracarys.test. 120 IN A Ut 7.026497.
+pranjalshukla@Pranjals—MacBook-Pro-3 ~ % ff
+
+i
+i

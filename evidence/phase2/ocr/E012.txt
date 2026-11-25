@@ -1,0 +1,47 @@
+™ @ @ @ B pranjalshukla— -zsh—158x34 . on
+< Connection: keep-alive  §
+
+z < X-Backend: A
+< Cache-Control: max-age=60
+< ETag: "dracarys-vi"
+
+<
+
+* Connection #@ to host app.dracarys.test left intact
+{"backend": "A", "status": "ok"}% pranjalshukla@Pranjals-MacBook-Pro-3 ~ % dig @10.7.3@.248 app.dracarys.test A
+
+j <<>> DAG 9.10.6 <<>> @10.7.30.248 app.dracarys.test A
+
+ge1 ; (1 server found)
+
+)  }7 global options: +cmd
+
+904 ;; Got answer:
+
+->>HEADER<<- opcode: QUERY, status: NOERROR, id: 25252
+
+157 [;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: @, ADDITIONAL: 1 1
+
+159 ;; OPT PSEUDOSECTION:
+@1g ; EDNS: version: @, flags:; udp: 1232
+
+i QUESTION SECTION: 7
+004 japp.dracarys.test. IN A
+159
+831 ;; ANSWER SECTION:
+
+app.dracarys.test. @ IN A 10.7.12.197 f
+786
+-32 77 Query time: 5@ msec
+
+216 ;; SERVER: 10.7.30.248#53(10.7.30.248)
+37 WHEN: Tue Nov 24 14:28:28 IST 2026
+549 ;; MSG SIZE revd: 62
++39
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo networksetup -setdnsservers "Wi-Fi" 10.7.3.26 10.7.30.248
+apt Password:
+s x pranjalshukla@Pranjals-MacBook-Pro-3 ~ % networksetup -getdnsservers "Wi-Fi"
+opp 10.7.3.26
+a@P 10.7.30.248
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % ff
+

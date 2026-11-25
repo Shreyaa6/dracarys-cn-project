@@ -1,3 +1,7 @@
+[Phase 2 evidence: all 57 screenshots and PCAP](phase2/README.md) · [Offline gallery](phase2/gallery.html)
+
+> Historical Phase 1 record. Older IPs and observations are retained; use the [Phase 2 architecture](../docs/architecture.md) for the 24 November deployment and corrected protocol/limitation notes.
+
 # Packet Capture & Verification Evidence
 
 This directory stores the official Wireshark packet captures, terminal verification logs, and empirical screenshots collected during live testing of the **Private Network Service Platform** (Team Dracarys).

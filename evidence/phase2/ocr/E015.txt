@@ -1,0 +1,74 @@
+5 B® © FHanuman chaiisa in 222m Co > » Bw
+
+@ @ @ BW pranjalshukla —-zsh— 19761
+
+Sc
+c
+
+2 (pranjalshukla@Pranjals-MacBook-Pro-3 ~ % dscacheutil -q host -a name ttl.dracarys.test
+name: ttl.dracarys.test
+ip_address: 10.7.30.248
+
+~—-2sh -zsh
+
+St [pranjalshukla@Pranjals-MacBook-Pro-3 ~ % cp -p /usr/local/ete/nginx/nginx.conf /usr/local/etc/nginx/nginx. conf .before-failover
+fH; Pranjalshukla@Pranjals-MacBook-Pro-3 ~ % cat > /usr/local/etc/nginx/nginx.conf <<'EOF*
+
+\ worker_processes 1;
+BD vents «
+worker_connections 1024;
+ay
+a
+A http ¢
+upstream backend_pool {
+1 server 10.7.30.248:3001 max_fails=1 fail_timeou
+
+ils=1 fail_timeout=
+
+At server 10.7.6.30:3002 max_
+,
+
+proxy_next_upstream_tries 2;
+
+m
+Proxy_connect_timeout 2s;
+Proxy_send_timeout 5s;
+proxy_read_timeout 5s;
+proxy_next_upstream error timeout http_8@2 http_503 http_S04;
+server {
+Listen 8080;
+Server_name app.dracarys.test api.dracarys.test;
+add_header X-Edge primary always;
+location / {
+proxy_pass http://backend_pool;
+proxy_set_header Host $host;
+proxy_set_header X-Real-IP Sremote_addr;
+a proxy_set_header X-Forwarded-For Sproxy_add_x_forwarded_for;
+
+server {
+listen 8443 ssl;
+server_name app.dracarys.test;
+
+ssl_certificate /usr/local/etc/nginx/certs/app.dracarys.test.crt;
+ssl_certificate_key /usr/local/etc/nginx/certs/app.dracarys.test .key; shots
+ssl_protocols TLSvi.2 TLSv1.3;
+
+add_header X-Edge primary always;
+
+proxy_pass http: //backend_pool;
+
+proxy_set_header Host Shost; DvAa
+| proxy_set_header X-Real-IP Sremote_addr;
+
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+>
+
+[EOF 1
+[pranjalshukla@Pranjals-MacBook-Pro-3 ~ % nginx -t }
+nginx: the configuration file /usr/local/etc/nginx/nginx.conf syntax is ok
+
+nginx: configuration file /usr/local/etc/nginx/nginx.conf test is successful
+
+[pranjalshukla@Pranjals-MacBook-Pro-3 ~ % nginx -s reload 1
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ %

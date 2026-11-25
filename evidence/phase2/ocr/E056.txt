@@ -1,0 +1,24 @@
++ = date '+%H:90:%S"
+
+curl connect-timeout 3 --max-time 5 \
+http://10.7.30.248:3001/api/status
+
+20:09:30
+
+HTTP/1.0 260 OK
+
+Server: BaseHTTP/@.6 Python/3.14.5
+
+Date: Tue, 24 Nov 2026 14:39:30 GMT
+
+Content-Type: application/json
+
+Content-Length: 32
+
+X-Backend: A
+
+Cache-Control: max-ag
+
+"dracarys-v1"
+
+{"backend": "A", "status": “ok"}E

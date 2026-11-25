@@ -1,0 +1,25 @@
+sudo tepdump -ni end -s @ \
+-w ~/Desktop/dracarys-evidence/client-dns-https.-pcap \
+
+{| ‘((host 10.7.30.248) and port 63) or ((host 10.7.12.197) and tcp port 8443)'
+
+topdump: listening on en@, link-type EN1@MB (Ethernet), snapshot length 524288 bytes
+
+8c32 packets captured
+
+14637 packets received by filter
+
+@ packets dropped by kernel
+
+[+ ~ open ~/Desktop/dracarys-evidence
+
++ date '43H:%:%S'
+
+curl connect-timeout 3 --max-time 5 \
+
+://10.7.6.30:3002/api/status
+
+20:06:00
+
+(7) Failed to connect to 10.7.6.30 port 3002 after 71 ms: Couldn't connect to server
+

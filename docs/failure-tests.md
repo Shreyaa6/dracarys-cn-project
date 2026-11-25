@@ -1,3 +1,5 @@
+> Historical Phase 1 record. Older IPs and observations are retained; use the [Phase 2 architecture](architecture.md) for the 24 November deployment and corrected protocol/limitation notes.
+
 # Failure & Resilience Demonstrations
 
 This document details the failure testing and resilience validations conducted on the **Private Network Service Platform** (Team Dracarys).

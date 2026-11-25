@@ -1,0 +1,74 @@
+Y @ @ © BM pranjalshukla—-zsh —197x61
+
+I
+
+~—-zsh ~—-zsh
+
+,
+/ Request 4
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+. Request 5
+HTTP/1.1 200 OK
+X-Backend: A
+7 X-Edge: primary
+Request 6
+HTTP/1.1 200 OK
+» X-Backend: B
+» X-Edge: primary
+|. pranjalshukla@Pranjals-MacBook-Pro-3 ~ % for i in {1..10}; do
+echo "Request $i"
+curl -s$ —-connect-timeout 3 --max-time 15 \
+f -D - -o /dev/null \
+https://app.dracarys.test:8443/api/status \
+n | grep -Ei '*HTTP/|*X-Backend: | *X-Edge:'
+sleep 1
+{done
+Request 1
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 2
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 3
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 4
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 5
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 6
+HTTP/1.1 200 OK
+X-Backend: B
+» X-Edge: primary
+Request 7
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 8
+HTTP/1.1 200 OK _DVAA
+X-Backend: B
+X-Edge: primary
+Request 9
+HTTP/1.1 200 OK
+
+X-Backend: B
+X-Edge: primary
+
+Request 10
+
+HTTP/1.1 20 OK
+
+X-Backend: B @
+
+X-Edge: primary
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % ff
+

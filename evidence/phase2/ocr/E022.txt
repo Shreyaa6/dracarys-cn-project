@@ -1,0 +1,104 @@
+= printf '\nhost-record=ttl.dracarys.test,10.7.12.197,38\n' | sudo t
+
+a /opt/honebrow/etc/dnst
+
+q.cont
+
+host-recordatt1.dracarys.test,10.7.12.197,30
+
+= sudo /opt/honebrew/opt/dnsnasa/sbin/dnsnasq
+
+[dnsmasa: syntax check OK.
+~ sudo brew services restart dnsmasa
+
+Stopping “dnsnasa”
+
+Warning: Taking root
+
+this will require manual renoval of these paths using “sudo 1
+
+‘Successfully stopped “dnsmasq)
+
+test -C /opt/nonebrew/etc/dnsmasa.conf -7 ' /opt/honebrew/etc/dnsnasq.d,*.conf”
+
+jdmin ownership of some dnsnasq paths:
+
+/opt/honebren/Celiar/dnsnasq/2.93/sbin
+‘opt /honebren/Ce1ar/dnsnasa/2.93/sbin/dnsmasq
+
+‘/opt/nonebrew/opt /dnsmasq
+‘Jopt/honebrew/opt/dnsnasq/sbin
+
+‘opt /nonebren/var /honebrew/1inked/dnsnasq
+
+brew upgrade/reinstali/uninstall.
+
+Root services will run Honebrew-installed soft
+root services if you t
+
+Stopping ‘dnsmasa®.... (ni
+
+‘Successfully start
+~ clear
+
+= sudo sed -i ‘1 ‘s/host-recordettl.dracary:
+‘dnemas
+a while)
+* Gabel: sh.brew.dnsnasq)
+
+= sudo brew services restai
+
+> Successfully stopped
+
+‘all users who
+
+Warning: Taking root:admin ownership of sone dnsmasq paths:
+Jopt /honebren/Cellar/<nsnasq/?.93/sbin
+
+HTTP/A.4 2
+
+feonanron/Cetlat/dnanenn/2.78/¢8in/
+
+‘opt /nonebrew/opt /dnsm
+‘opt /honebrew/opt/dnsmasq/sbin
+
+‘/opt/honebrew/var/honebrew/1inked/dnsmasq
+this will require manual renoval of these paths using “sudo ra° on
+brew Upgrade/reinstall/uninstall.
+
+‘Successfully start
+
+= curl
+
+Server: nginx/1.31.6
+
+Date: Tue, 24 Nov 2026 1%
+Content=Ty
+
+application/json
+ith: 32
+Keep-alive
+
+Tag: *drecarys-vi"
+
+X-Edge:
+
+primary
+
+status": "ok ME
+
+"3 will run Honebrew-installed
+root services if you tru!
+
+fs
+
+a root by default. Only u:
+
+Fs who can write to your Homebrew installation.
+sq° (Label: sh.brew.dnst
+
+= curl ~i —connect-tineout 3—max-tine 5 htt
+
+curl
+
+fest, 10.7.12.197,30/host-record=ttl.dracarys.test,10.7.30.248,30/' /opt/honebrow/etc/dnsmasq.conf

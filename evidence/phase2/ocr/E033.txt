@@ -1,0 +1,89 @@
+(304) (IN), TLS handshake, CERT verify (15):
+(304) (IN), TLS handshake, Finished (20):
+
+(304) (OUT), TLS handshake, Finished (20):
+
+SSL connection using TLSv1.3 / AEAD-CHACHA2@-POLY1305-SHA256 / [blank] / UNDEF
+ALPN: server accepted http/1.2
+
+Server certificate
+
+subject: CNeapp.dracarys.test
+
+start date: Nov 24 13:25:06 2026 GMT
+
+expire date: Feb 22 13:25:06 2027 GMT
+
+subjectAltName: host "app.dracarys.test" matched cert's "app.dracarys.test"
+issuer: CN=Dracarys Local CA
+
+SSL certificate verify ok.
+
+using HTTP/1.x
+
+GET /api/status HTTP/1.1
+
+Host: app.dracarys.test:8443
+
+User-Agent: curl/8.7.1
+
+Accept: */*
+
+Request completely sent off
+HTTP/1.1 200 OK
+
+Server: nginx/1.31.10
+
+Date: Tue, 24 Nov 2026 13:34:53 GMT
+Content-Type: application/json
+Content-Length: 32
+
+Connection: keep-alive
+
+X-Backend: A
+
+Cache-Control: max-age=60
+
+ETag: “dracarys-v1"
+
+X-Edge: standby
+
+RRAARRARAARHVVVVV ERE R EERE REE EH
+
+% Connection #@ to host app.dracarys.test left intact
+{"backend": "A", "status": "ok" }E
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % for i in {1..6}; do
+echo "Request $i"
+curl -sS --connect-timeout 5 --max-time 15 \
+=-resolve app.dracarys.test:8443:10.7.30.248 \
+=D = -0 /dev/null \
+https: //app.dracarys.test:8443/api/status \
+| grep -Ei '*HTTP/|*x-Backend: | *X-Edge:'
+sleep 1
+don
+Request 1
+HTTP/1.1 260 OK
+X-Backend: B
+X-Edge: standby
+Request 2
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: standby
+Request 3
+HTTP/2.1 208 OK
+X-Backend: B
+X-Edge: standby
+Request 4
+HTTP/2.1 208 OK
+X-Backend: A
+X-Edge: standby
+Request 5
+HTTP/1.1 260 OK
+X-Backend: B
+X-Edge: standby
+Request 6
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: standby
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % ff
+

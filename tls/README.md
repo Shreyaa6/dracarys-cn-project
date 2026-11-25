@@ -1,3 +1,5 @@
+> Historical Phase 1 record. Older IPs and observations are retained; use the [Phase 2 architecture](../docs/architecture.md) for the 24 November deployment and corrected protocol/limitation notes.
+
 # TLS & Certificate Architecture
 
 This directory documents the Transport Layer Security (TLS) configuration and Public Key Infrastructure (PKI) established for Team Dracarys's **Private Network Service Platform**.

@@ -1,0 +1,10 @@
+[isro@isro-desktop:~/CN_Project/backend-b$ sudo ss -1tnp ‘sport = :3002'
+
+State Recv-@ Send-Q Local Address:Port
+isro@isro-desktop:~/CN_Project/backend-b$ ed ~/CN_Project/backend-b
+
+python3 server.py
+
+ces B running on port 3002
+
+Peer Address:Port Process

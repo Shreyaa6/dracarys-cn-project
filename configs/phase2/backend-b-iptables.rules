@@ -1,0 +1,11 @@
+# Reconstructed from E029. Command recipe, NOT an iptables-restore file.
+# Run individually on Pi after backup and checking chain does not exist.
+sudo iptables -N DRACARYS_BACKEND
+sudo iptables -A DRACARYS_BACKEND -i lo -j RETURN
+sudo iptables -A DRACARYS_BACKEND -i wlan0 -s 10.7.12.197 -j ACCEPT
+sudo iptables -A DRACARYS_BACKEND -j DROP
+sudo iptables -I INPUT 1 -p tcp --dport 3002 -j DRACARYS_BACKEND
+# Rollback, in this order:
+# sudo iptables -D INPUT -p tcp --dport 3002 -j DRACARYS_BACKEND
+# sudo iptables -F DRACARYS_BACKEND
+# sudo iptables -X DRACARYS_BACKEND

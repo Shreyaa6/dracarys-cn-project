@@ -1,0 +1,78 @@
+Y @ @ @ BM pranjaishukla — -zsh—197%61
+
+zsh
+
+4 proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+)
+}
+
+server {
+listen 8443 ssl;
+1 server_name app.dracarys.test;
+
+ssl_certificate /usr/local/ete/nginx/certs/app.dracarys.test.crt;
+ssl_certificate_key /usr/local/etc/nginx/certs/app.dracarys.test.key;
+ssl_protocols TLSvi.2 TLSv1.3;
+
+add_header X-Edge primary always;
+
+H location / {
+proxy_pass http://backend_pool;
+
+, proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+}
+[EOF
+[pranjalshukla@Pranjals-MacBook-Pro-3 ~ % nginx -t
+nginx: the configuration file /usr/local/etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /usr/local/etc/nginx/nginx.conf test is successful
+(pranjalshukla@Pranjals-MacBook-Pro-3 ~ % nginx -s reload
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % for i in {1..6}; do
+echo "Request $i’
+curl -sS --connect-timeout 3 --max-time 15 \
+=D - -o /dev/null \
+https: //app.dracarys.test:8443/api/status \
+| grep -Ei '*HTTP/|*X-Backend: | *X-Edge:"
+sleep 1
+[done
+Request 1
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Request 2
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 3
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Request 4
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+Request 5
+HTTP/1.1 200 OK
+X-Backend: A
+X-Edge: primary
+Request 6
+HTTP/1.1 200 OK
+X-Backend: B
+X-Edge: primary
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % fj
+
+>
+-zsh ae :
+
+ie
+
+te
+
+Ite
+
+is
+

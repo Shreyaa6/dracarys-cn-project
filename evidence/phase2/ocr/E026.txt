@@ -1,0 +1,68 @@
+@ Terminal Shell Edit View Window Help € @ @ F BQ SB _ Tue 24Nov 6:32PM
+
+© @ @ WW shreyanarayani — isro@isro-desktop: ~ — ssh isro@10.7.6.30 — 213x64
+# Warning: table ip nat is managed by iptables-nft, do not touch!
+table ip nat {
+
+chain DOCKER {
+
+}
+
+chain PREROUTING {
+
+type nat hook prerouting priority dstnat; policy accept;
+
+fib daddr type local counter packets 4@ bytes 4668 jump DOCKER
+,
+
+chain OUTPUT {
+type nat hook output priority dstnat; policy accept;
+ip daddr != 127.0.0.0/8 fib daddr type local counter packets @ bytes @ jump DOCKER
+
+chain POSTROUTING {
+type nat hook postrouting priority srenat; policy accept;
+counter packets 829 bytes 63477 jump ts-postrouting
+ip saddr 172.17.0.0/16 oifname != “docker@" counter packets @ bytes @ masquerade
+
+,
+
+chain ts-postrouting ¢
+meta mark & @x@@ff0000 == 0x20040000 counter packets @ bytes @ masquerade
+
+table ipé filter is managed by iptable:
+table ipé filter {
+
+chain DOCKER {
+
+>
+
+-nft, do not touch!
+
+chain DOCKER-FORWARD {
+counter packets @ bytes @ jump DOCKER-CT
+counter packets @ bytes @ jump DOCKER-INTERNAL
+counter packets @ bytes @ jump DOCKER-BRIDGE
+
+chain DOCKER-BRIDGE {
+
+chain DOCKER-CT {
+
+chain DOCKER-INTERNAL {
+
+chain FORWARD {
+type filter hook forward priority filter; policy accept;
+counter packets @ bytes @ jump ts-forward
+counter packets @ bytes @ jump DOCKER-USER
+counter packets @ bytes @ jump DOCKER-FORWARD
+
+chain DOCKER-USER {
+
+chain ts~input {
+ip6 saddr fd7a:116c:a1e0::d44f:9a1f iifname "lo" counter packets @ bytes @ accept
+iifmame "tailscaleo" counter packets 2 bytes 1310 accept
+udp dport 41641 counter packets @ bytes @ accept
+
+chain ts-forward {
+iifmame "tailscaleo" counter packets @ bytes @ meta mark set mark and Oxffffff xor @x40000
+meta mark & @x@@Ff0000 == 0x20040000 counter packets @ bytes @ accept
+

@@ -1,0 +1,96 @@
+Last login: Mon Nov 23 16:11:00 on ttyseee
+{meghna@Meghnas-MacBook-Pro ~ % ipconfig getifaddr end
+10.7.30.248
+
+meghna@Meghnas-MacBook-Pro ~ % ping -c 3 10.7.3.26
+
+ping -c 3 10.7.12.197
+
+(ping -c 3 10.7.6.30
+
+PING 10.7.3.26 (10.7.3.26): 56 data bytes
+
+64 bytes from 10.7.3.26: icmp_seq=@ ttl=64 time=7.994 ms
+64 bytes from 10.7.3.26: i 4 time=66.404 ms
+64 bytes from 10.7.3.26: 4 time=79.179 ms
+
+--- 10.7.3.26 ping statistics -—-
+3 packets transmitted, 3 packets received, @.@% packet loss
+
+round-trip min/avg/max/stddev = 7.994/51.192/79.179/38.988 ms
+PING 10.7.12.197 (10.7.12.197): 56 data bytes
+
+64 bytes from 10.7.12.197: icmp_seq=@ tt1=64 tim
+64 bytes from 10.7.12.197: icmp_seq=1 tt1=64 tim
+64 bytes from 10.7.12.197: icmp_seq=2 tt1=64 tim
+
+356 ms
+079 ms
+1.542 ms
+
+--- 10.7.12.197 ping statistics ---
+
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 7.356/12.659/21.542/6.320 ms
+PING 10.7.6.30@ (10.7.6.30): 56 data bytes
+
+64 bytes from 10.7.6.30: icmp_seq=@ ttl=64 time=26.68@ ms
+64 bytes from 10.7.6.30: icmp_se: i
+64 bytes from 10.7.6.30: icmp_se:
+
+4 time=8.980 ms
+
+--- 10.7.6.30 ping statistics ---
+
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 8.980/15.659/26.680/7.851 ms
+{meghna@Meghnas-MacBook-Pro ~ % cd ~/CN_Project/backend-a
+{meghna@Meghnas-MacBook-Pro backend-a % python3 server.py
+Backend A running on port 3001
+
+10.7.30.248 - - [24/Nov/2@26 13:43:46] code 400, message Bad request version ('#!\\x@@$féh92\\x07\\xad@g\\x03\ \xOO*##\ \x13\ \x02\ \x13\\x03\\x13\\x01A, A+ieA@A/I~A')
+
+10.7.30.248 - - [24/Nov/2026 13:43:46] "\x16\x@3\x01\x054\x01\x@0\ x054\ x03 \x03\x14\ x85p\x096H \x1a$qn-+E \ x86P\x1182\x@3\ xOF\x190\ x94¥AZ\xO15\x91° /\x9a \x83+bz+0i0\x1cEp\x1BAYEdL\ xO? ! \x0@$FEh92\x07—Bg\xO3\xOOHH\ x1.
+3\x02\x13\x@3\x13\x01A, A+1eA@A/T 400 -
+
+10.7.30.248 - - [24/Nov/2026 13:43:46] code 400, message Bad request version ('a#\\x1b\\x12\\x9f\\x18\\x8d\\x@@, : :\\x13\\x02\\x13\\x03\\x13\\x01A, A+LeA@A/I~A')
+
+1@.7.30.248 - - [24/Nov/2@26 13:43:46] "\x16\x@3\x01\x05¢\x@1\x00\x054\x@3\x@3D\x1@.\x18 +C%N2iR\x9b\x7F<a*ia\x07°al GON. \x1241,U \xOfWE\x9aS%&\x8e\x04q”p\xB4\xOb| .E\x9@\x82\x81D\x95+4\ x97 \ xOba\ x1b\x12\x9f\x18\x8d\
+x@0, : :\x13\x02\x13\x03\x13\x@1A, A+ieA@A/I™A" 400 -
+
+1@.7.12.197 - - [24/Nov/2@26 13:44:14] "GET /api/status HTTP/1.1" 200 -
+
+1€.7.12.197 - - [24/Nov/2026 14:04:26] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 14:04:26] "GET /api/status HTTP/1.1" 200 -
+
+1€@.7.12.197 - - [24/Nov/2@26 14:04:27] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 14:23:09] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 14:42:37] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 15:09:28] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 15:38:21] " /api/status HTTP/1.1" 200 —
+
+1.7.12.197 - - [24/Nov/2026 15:38:24] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 15:38:26] " /api/status HTTP/1.1" 200 —
+
+*CTraceback (most recent call last):
+File "/Users/meghna/CN_Project/backend-a/server.py", line 64, in <module>
+
+server.serve_forever()
+
+File "/Library/Frameworks/Python. framework/Versions/3.14/lib/python3.14/socketserver.py", line 235, in serve_forever
+ready = selector.select(poll_interval)
+File "/Library/Frameworks/Python. framework/Versions/3.14/lib/python3.14/selectors.py", line 398, in select
+fd_event_list = self._selector.poll(timeout)
+Keyboardinterrupt
+
+meghna@Meghnas-MacBook-Pro backend-a % date
+lsof -nP -iTCP:3001 -sTCP:LISTEN
+
+Tue Nov 24 15:40:32 IST 2026
+meghna@Meghnas-MacBook-Pro backend-a % ff

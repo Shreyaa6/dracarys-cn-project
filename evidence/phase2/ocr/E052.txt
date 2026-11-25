@@ -1,0 +1,11 @@
+isro@isro-desktop:~/CN_Project/backend-b$ sudo iptables -D INPUT -p tcp —-dport 3002 -—j DRACARYS_BACKEND
+
+sudo iptables -F DRACARYS_BACKEND
+sudo iptables -X DRACARYS_BACKEND
+
+sudo iptables -S INPUT
+
+-P INPUT ACCEPT
+
+-A INPUT -j ts-input
+isro@isro-desktop:~/CN_Project/backend-b$ fj

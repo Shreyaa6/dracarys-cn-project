@@ -1,0 +1,68 @@
+|meghna@Meghnas-MacBook-Pro dracarys-private % openssl req -in standby.csr -noout -verify -subject
+
+verify OK
+
+subject=/CN=app.dracarys.test
+
+{meghna@Meghnas-MacBook-Pro dracarys-private % open ~/dracarys-private
+
+{meghna@Meghnas-MacBook-Pro dracarys-private % cp ~/Downloads/standby.crt ~/dracarys-private/standby.crt
+
+{meghna@Meghnas-MacBook-Pro dracarys-private % openssl x509 -in ~/dracarys-private/standby.crt -noout -modulus | openssl dgst -sha256
+bb4439cee@cb2f f1cd0425efb98d79c16d9e5b1e8294014F1946d9646317ed51
+
+{meghna@Meghnas-MacBook-Pro dracarys-private % openssl rsa -in ~/dracarys-private/standby.key -noout -modulus | openssl dgst -sha256
+bb4439cee@cb2f flcd0425efb98d79c16d9e5b1e8294014F1946d9646317ed51
+
+{meghna@Meghnas-MacBook-Pro dracarys-private % cp -p /opt/homebrew/etc/nginx/nginx.conf /opt/homebrew/etc/nginx/nginx.conf.before-standby
+meghna@Meghnas-MacBook-Pro dracarys-private % cat > /opt/homebrew/etc/nginx/nginx.conf <<'EOF'
+
+worker_processes 1;
+
+events {
+worker_connections 1024;
++
+http {
+upstream backend_pool {
+server 127.0.@.1:3001 max_fails=1 fail_timeou
+server 10.7.6.30:3002 max_fails=1 fail_timeou
+}
+proxy_connect_timeout 2s;
+proxy _send_timeout 5s;
+proxy _read_timeout 5s;
+proxy_next_upstream error timeout http_5@2 http_5@3 http_504;
+proxy _next_upstream_tries 2;
+server {
+listen 8080;
+server_name app.dracarys.test;
+add_header X-Edge standby always;
+location / {
+proxy_pass http://backend_pool;
+proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+y
+ip
+server {
+listen 8443 ssl;
+server_name app.dracarys.test;
+ssl_certificate /Users/meghna/dracarys-private/standby.crt;
+ssl_certificate_key /Users/meghna/dracarys-private/standby.key;
+ssl_protocols TLSv1.2 TLSv1.3;
+add_header X-Edge standby always;
+location / {
+proxy_pass http://backend_pool;
+proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+}
+}
+{EOF
+
+{meghna@Meghnas-MacBook-Pro dracarys-private % /opt/homebrew/bin/nginx -t
+
+nginx: the configuration file /opt/homebrew/etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /opt/homebrew/etc/nginx/nginx.conf test is successful
+{meghna@Meghnas-MacBook-Pro dracarys-private % /opt/homebrew/bin/nginx
+meghna@Meghnas-MacBook-Pro dracarys-private % ff

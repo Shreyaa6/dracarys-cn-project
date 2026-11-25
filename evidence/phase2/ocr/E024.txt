@@ -1,0 +1,64 @@
+@ Terminal Shell Edit View Window Help € @ @ F BQ SB _ Tue 24Nov 6:32PM
+
+© @ @ W shreyanarayani — isro@isro-desktop: ~ — ssh isro@10.7.6.30 — 213x64
+isro@isro-desktop:~$ sudo nft list ruleset
+# Warning: table ip filter is managed by iptables-nft, do not touch!
+table ip filter {
+chain DOCKER {
+{ difname != "docker®" oifname “docker®" counter packets @ bytes @ drop
++
+
+chain DOCKER-FORWARD {
+counter packets @ bytes @ jump DOCKER-CT
+counter packets @ bytes @ jump DOCKER-INTERNAL
+counter packets @ bytes @ jump DOCKER-BRIDGE
+iifname "“docker@" counter packets @ bytes @ accept
+
+chain DOCKER-BRIDGE {
+oifname "docker@" counter packets @ bytes @ jump DOCKER
+
+chain DOCKER-CT {
+oifname "dockero*
+
+stablished counter packets @ bytes @ accept
+
+chain DOCKER-INTERNAL {
+
+chain FORWARD {
+type filter hook forward priority filter; policy drop;
+counter packets @ bytes @ jump ts-forward
+counter packets @ bytes @ jump DOCKER-USER
+counter packets @ bytes @ jump DOCKER-FORWARD
+
+chain DOCKER-USER {
+
+chain ts~input {
+ip saddr 100.74.154.3@ iifname "lo" counter packets @ bytes @ accept
+iifname “tailscale@" counter packets 4 bytes 1153 accept
+udp dport 41641 counter packets 2124 bytes 282076 accept
+ip saddr 100.115.92.0/23 iifname “tailscale@" counter packets @ bytes @ return
+ip saddr 100.64.0.0/10 iifname != "tailscale™ counter packets @ bytes @ drop
+
+chain ts-forward {
+
+fname "tailscale®" counter packets @ bytes @ meta mark set mark and Oxffeoffff xor 0x40e00
+meta mark & @x@@ffeeee == 9x00040000 counter packets @ bytes @ accept
+
+ip saddr 10.64..0/1@ oifname "tailscaleo" counter packets @ bytes @ drop
+
+cifname "tailscaled" counter packets @ bytes @ accept
+
+chain INPUT {
+type filter hook input priority filter; policy accept;
+counter packets 109848 bytes 33362321 jump ts-input
+}
+:
+# Warning: table ip nat is managed by iptables-nft, do not touch!
+table ip nat {
+chain DOCKER {
+y
+
+chain PREROUTING {
+type nat hook prerouting priority dstnat; policy accept;
+fib daddr type local counter packets 40 bytes 4668 jump DOCKER
+

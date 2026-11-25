@@ -1,0 +1,96 @@
+10.7.30.248
+meghna@Meghnas-MacBook-Pro ~ % ping -c 3 10.7.3.26
+
+ping -c 3 10.7.12.197
+
+(ping -c 3 10.7.6.30
+
+PING 10.7.3.26 (10.7.3.26): 56 data bytes
+
+64 bytes from 10.7.3.26: icmp_seq=@ ttl=64 time=7.994 ms
+64 bytes from 10.7.3.26: icmp_seq=1 ttl=64 time=66.404 ms
+64 bytes from 10.7.3.26: icmp_seq=2 ttl=64 time=79.179 ms
+
+--- 10.7.3.26 ping statistics ---
+3 packets transmitted, 3 packets received, @.0% packet loss
+round-trip min/avg/max/stddev = 7.994/51.192/79.179/30.988 ms
+PING 10.7.12.197 (10.7.12.197): 56 data bytes
+
+64 bytes from 10.7.12.197: icmp_se 4 time=7.356 ms
+64 bytes from 10.7.12.197: icmp_se i
+64 bytes from 10.7.12.197: icmp_seq=
+
+ttl=64 time=21.542 ms
+
+--- 10.7.12.197 ping statistics ---
+3 packets transmitted, 3 packets received, @.0% packet loss
+round-trip min/avg/max/stddev = 7.356/12.659/21.542/6.320 ms
+PING 10.7.6.38 (10.7.6.30): 56 data bytes
+
+64 bytes from 10.7.6.30: icmp_seq=@ ttl=64 time=26.680 ms
+64 bytes from 10.7.6.30: icmp_seq=1 tt i
+64 bytes from 10.7.6.30: icmp_seq=2 tt
+
+--- 10.7.6.30 ping statistics ---
+
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 8.980/15.659/26.680/7.851 ms
+[meghna@Meghnas-MacBook-Pro ~ % cd ~/CN_Project/backend-a
+{meghna@Meghnas-MacBook-Pro backend-a % python3 server.py
+Backend A running on port 3001
+
+10.7.3@.248 - - [24/Nov/2026 13:43:46] code 400, message Bad request version ('4!\\x@@$féh92\\x07\\xad@g\ \x03\\xOO##\\x13\\xO2\\x13\\x@3\\x13\\x01A, A+TeA@A/I~A')
+
+10.7.30.248 - - [24/Nov/2026 13:43:46] "\x16\x@3\x@1\x@54\x01\x0@\x054\x03\ x03\x14\x85p\x@96H\ x1a$qn-E\ x86P\x1182\x03\ xOF\x19U\x94¥Z\xO15\x91°/\x9a \x83+pz+010\x1cEp\x1BAYESE\x0c? ! \x0@$F6h92\x07—Bg\ x03 \ x@OHx#\ x1
+
+3\x@2\x13\x03\x13\x@1A,A+ieAQA/1"A" 400 —
+
+10.7.30.248 - - [24/Nov/2026 13:43:46] code 400, message Bad request version ('#\\x1b\\x12\\x9f\\x18\\x8d\\x0, : :\\x13\\x02\\x13\\x03\\x13\\x01A, A+TeA@A/T
+
+10.7.30.248 - - [24/Nov/2026 13:43:46] "\x16\x@3\x@1\x@5¢\x1\x0@\x054\x03\x@3D\x10.\x18 +C%N2iR\x9b\x7f<w2ia\x07 el GON. \x12*1,U \x@fWE\x9aS%&\ xB8e\x04q” p\x84\xOb| .E\x9@\x82\x81D\x95+4\x97\x@ba\x1b\x12\ x9F\x18\x8d\,
+\x13\x02\x13\x@3\x13\x01A,A+ieAQA/I"A" 400 -
+
+10.7.12.197 - - [24/Nov/2026 13:44:14] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 14:04:26] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 14:04:26] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 14:04:27] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 14:23:09] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 14:42:37] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 15:09:28] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 15:38:21] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 15:38:24] "GET /api/status HTTP/1.1" 200 -
+
+10.7.12.197 - - [24/Nov/2026 15:38:26] "GET /api/status HTTP/1.1" 200 -
+
+cTraceback (most recent call last
+File "/Users/meghna/CN_Project/backend-a/server.py", line 64, in <module>
+server.serve_forever()
+IN
+Library/Frameworks/Python. framework/Versions/3.14/1ib/python3.14/socketserver.py", line 235, in serve forever
+= selector.select(poll_interval)
+File "/Library/Frameworks/Python. framework/Versions/3.14/1ib/python3.14/selectors.py", line 398, in select
+fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+
+meghna@Meghnas-MacBook-Pro backend-a % date
+
+sof -nP -iTCP:3001 -sTCP:LISTEN
+
+Tue Nov 24 15:40:32 IST 2026
+
+meghna@Meghnas-MacBook-Pro backend-a % cd ~/CN_Project/backend-a
+date
+
+(python3 server.py
+
+Tue Nov 24 15:42:51 IST 2026
+
+Backend A running on port 3001

@@ -1,0 +1,8 @@
+# Preserve original binary evidence and generated PDF bytes.
+*.png binary
+*.jpeg binary
+*.pcap binary
+*.pdf binary
+# Original machine OCR is preserved, including trailing blank lines.
+evidence/phase2/ocr/*.txt -text -whitespace
+*.csv text eol=lf

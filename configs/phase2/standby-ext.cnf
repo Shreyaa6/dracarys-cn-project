@@ -1,0 +1,5 @@
+# Reconstructed signing extensions visible in E031.
+basicConstraints=critical,CA:FALSE
+keyUsage=critical,digitalSignature,keyEncipherment
+extendedKeyUsage=serverAuth
+subjectAltName=DNS:app.dracarys.test

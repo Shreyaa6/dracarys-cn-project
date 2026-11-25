@@ -1,0 +1,102 @@
+Last login: Tue Nov 24 18:55:05 on ttyse2
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % date '+%H:
+dig @10.7.3.26 app.dracarys.test A +noall +answer
+[dig 010.7.30.248 app.dracarys.test A +noall +answer
+19:17:06
+
+<<>> DiG 9.10.6 <<>> @10.7.3.26 app.dracarys.test A +noall +answer
+(1 server found)
+
+i} global options: +cmd
+
+app.dracarys.test. 30 IN A 10.7.30.268
+
+j <<>> DIG 9.10.6 <<>> @10.7.30.248 app.dracarys.test A +noall +answer
+j (1 server found)
+
+ij global options: +emd
+
+app.dracarys.test. 30 IN A 10.7.30.268
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % date ‘+%H:30:%S'
+
+curl -v ~-connect-timeout 5 --max-time 15 \
+| https://app.dracarys.test:8443/api/status
+19:18:32
+
+Host app.dracarys.test:8443 was resolved.
+
+IPv6: (none)
+
+IPv4: 10.7.30.248
+
+Trying 10.7.30.248:8443...
+Connected to app.dracarys.test (10.7.30.248) port 8443
+ALPN: curl offers h2,http/1.1
+
+(34) (OUT), TLS handshake, Client hello (1):
+
+CAfile: /etc/ssi/cert.pem
+
+CApath: none
+
+(304) (IN), TLS handshake, Server hello (2):
+
+(304) (IN), TLS handshake, Unknown (8):
+(304) (IN), TLS handshake, Certificate (11
+(304) (IN), TLS handshake, CERT verify (15):
+
+(304) (IN), TLS handshake, Finished (20):
+
+(304) (OUT), TLS handshake, Finished (20):
+
+SSL connection using TLSv1.3 / AEAD-CHACHA2@-POLY1305-SHA256 / [blank] / UNDEF
+ALPN: server accepted http/1.1
+
+Server certificat
+
+subject: CNeapp.dracarys.test
+
+start date: Nov 24 13:25:06 2026 GMT
+
+expire date: Feb 22 13:25:06 2027 GMT
+
+subjectAltName: host "app.dracarys.test" matched cert's “app.dracarys.test"
+issuer: CN=Dracarys Local CA
+
+SSL certificate verify ok.
+
+using HTTP/1.x
+
+GET /api/status HTTP/1.1
+
+Host: app.dracarys.test:8443
+
+User-Agent: curl/8.7.1
+
+Accept: */*
+
+Request completely sent off
+HTTP/1.1 200 OK
+
+Server: nginx/1.31.10
+
+Date: Tue, 24 Nov 2026 13:48:32 GMT
+Content-Type: application/json
+Content-Length: 32
+
+Connection: keep-alive
+
+X-Backend: B
+
+Cache-Control: max-age=60
+
+ETag: “dracarys-v1"
+
+X-Edge: standby
+
+RRAARRRAAARHVVVVV EERE HERE EERR EEE ERR REE E REE
+
+% Connection #0 to host app.dracarys.test left intact
+(backend*: "B", "status": "ok" }E
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % lf
+

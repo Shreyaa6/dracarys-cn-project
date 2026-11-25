@@ -1,0 +1,94 @@
++ ~ sudo sed -i'' \
+'s|*host-record=tt1.dracarys.test, 10.7.12.197,120$|host-record=ttl.dracarys.test,10.7.30.248,120|' \
+/opt/homebrew/etc/dnsmasq.cont
+
+sudo brew services restart dnsmasq
+
+[date '+%H:%M:%S"
+
+Stopping ‘dnsmasq™... (might take a while)
+
+==> Successfully stopped “dnsmasq” (label: sh.brew.dnsmasq)
+
+Warning: Taking root:admin ownership of some dnsmasq paths:
+/opt /homebrew/Cellar /dnsmasq/2.93/sbin
+/opt/honebrew/Cellar/dnsmasq/2.93/sbin/dnsmasq
+Jopt/homebrew/opt/dnsmasq
+/opt/honebrew/opt/dnsmasq/sbin
+/opt/homebrew/var /homebrew/1inked/dnsmasq
+
+This will require manual removal of these paths using “sudo rm* on
+
+brew upgrade/reinstall/uninstall.
+
+Root services will run Homebrew-installed software as root by default. Only use
+
+root services if you trust all users who can write to your Homebrew installation.
+> Successfully started “dnsmasq’ (label: sh.brew.dnsmasq)
+
+19:39:32
+
+= date '49H:5M:%S'
+
+dig @10.7.3.26 ttl.dracarys.test A ¢noall tanswer
+
+(dig @10.7.30.248 ttl.dracarys.test A +noall +answer
+
+19:39:38
+
+<<>> DiG 9.10.6 <<>> @10.7.3.26 ttl-dracarys.test A ¢noall +answer
+(1 server found)
+
+ij global options: +cmd
+
+ttl.dracarys.test. 120° IN A 10.7.30.248
+
+} <<>> DIG 9.10.6 <<>> @10.7.30.248 ttl-dracarys.test A +noall +answer
+
+; (1. server found)
+
+ij global options: +cmd
+
+ttl.dracarys.test. 120° IN A 10.7.30.248
+
++ ~ sudo sed -i '' \
+'s|*host-record=tt1.dracarys.test,10.7.30.248,120$|host-record=ttl.dracarys.test,10.7.12.197,128|' \
+Jopt/homebrew/etc/dnsmasq.conf
+
+sudo brew services restart dnsmasq
+
+(Password:
+
+Stopping “dnsmasq’... (might take a while)
+
+Successfully stopped “dnsmasq’ (label: sh.brew.dnsmasq)
+
+Warning: Taking root:admin ownership of some dnsmasq paths:
+/opt/homebrew/Cellar/dnsmasq/2.93/sbin
+/opt/homebrew/Cellar/dnsmasq/2.93/sbin/dnsmasq
+Jopt/homebrew/opt/dnsmasq
+Jopt /homebrew/opt /dnsmasq/sbin
+/opt/homebrew/var/homebrew/1inked/dnsmasq
+
+This will require manual removal of these paths using “sudo rm* on
+
+brew upgrade/reinstall/uninstall.
+
+Root services will run Homebrew-installed software as root by default. Only use
+
+root services if you trust all users who can write to your Homebrew installation.
+
+==> Successfully started “dnsmasq” (label: sh.brew.dnsmasq)
+
+[> = clear
+
++ ~ mkdir -p ~/Desktop/dracarys-evidence
+
+sudo tepdump -ni end -s @ \
+
+=w ~/Desktop/dracarys-evidence/client-dns-https.pcap \
+{| ‘((host 10.7.30.248) and port 53) or ((host 10.7.12.197) and tcp port 8443)'
+topdump: listening on en@, link-type EN1@MB (Ethernet), snapshot length 524288 bytes
+8032 packets captured
+14637 packets received by filter
+@ packets dropped by kernel

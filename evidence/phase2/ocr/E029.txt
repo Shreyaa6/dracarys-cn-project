@@ -1,0 +1,19 @@
+isro@isro-desktop:~*$ sudo iptables —L INPUT -n -v —-line-numbers
+Chain INPUT (policy ACCEPT 112K packets, 34M bytes)
+
+num pkts bytes target prot opt in out source destination
+
+ak ay) 795 DRACARYS_BACKEND 6 —- x * @.0.0.0/0 @.0.0.0/0
+tcp dpt:3002
+
+2 114K 34M ts-input 7) -- * @.0.0.0/0 @.0.0.0/0
+
+jisro@isro-desktop:~$ sudo iptables -L DRACARYS_BACKEND -n -v --line-numbers
+Chain DRACARYS_BACKEND (1 references)
+
+num pkts bytes target prot opt in out source destination
+ak 1) @ RETURN ) -- lo * @.0.0.0/0 @.0.0.0/0
+2 6 411 ACCEPT ) -- wlang * 10.7.12.197 0.0.0.0/0
+3 6 384 DROP ) —- * @.0.0.0/0 @.0.0.0/0
+
+isro@isro-desktop:~$ fj

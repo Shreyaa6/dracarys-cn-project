@@ -1,0 +1,78 @@
+ame: ttl.dracarys.test
+ip_address: 10.7.30.248
+
+19:44:12
+name: ttl.dracarys.test
+ip_address: 10.7.30.248
+
+19:41:17
+name: ttl.dracarys.test
+ip_address: 10.7.30.248
+
+19:41:22
+name: ttl.dracarys.test
+ip_address: 10.7.30.248
+
+19:41:27
+name: ttl.dracarys.test
+ip_address: 10.7.30.248
+
+19:41:32
+me: ttl.dracarys.test
+ip_address: 10.7.30.248
+
+19:41:37
+name: ttl.dracarys.test
+ip_address: 10.7.30.248
+
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % sudo dscacheutil -flushcache
+sudo killal1 -HUP mDNSResponder
+
+date '+3H:%M:%S'
+
+\dscacheutil -q host -a name ttl.dracarys.test
+
+Password:
+
+19:43:55
+
+name: ttl.dracarys.test
+
+ip_address: 10.7.30.248
+
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % date '+%H
+dig @10.7.3.26 ttl.dracarys.test A +noall +answer
+dig @10.7.30.248 ttl.dracarys.test A +noall +answer
+
+dscacheutil -q host -a name ttl.dracarys.test
+
+sudo dscacheutil -flushcache
+sudo killall -HUP mONSResponder
+
+date '+3H:%M:%S'
+[dscacheutil -q host -a name ttl.dracarys.test
+19:45:10
+
+j <<>> DIG 9.10.6 <<>> @10.7.3.26 ttl.dracarys.test A +noall +answer
+; (1 server found)
+
+i; global options: +cmd
+
+ttl.dracarys. test. 120° IN A 10.7.12.197
+
+<<>> DiG 9.10.6 <<>> 010.7.30.248 ttl.dracarys.test A +noall +answer
+(1 server found)
+
+global options: +cmd
+
+ttl-dracarys.test. 120° IN A 10.7.12.197
+
+name: ttl.dracarys.test
+
+ip_address: 10.7.30.248
+
+19:45:10
+name: ttl.dracarys.test
+ip_address: 10.7.12.197
+
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % ff

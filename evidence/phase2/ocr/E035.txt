@@ -1,0 +1,25 @@
+—-zsh
+
+Last login: Tue Nov 24 18:55:05 on ttyse2
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ % date '+%H:%M:%S'
+dig @10.7.3.26 app.dracarys.test A +noall +answer
+
+[dig @10.7.30.248 app.dracarys.test A +noall +answer
+19:17:06
+
+<<>> DiG 9.10.6 <<>> @10.7.3.26 app.dracarys.test A +noall +answer
+(1 server found)
+
+; global options: +cmd
+
+app.dracarys.test. 30 IN A 10.7.30.248
+
+} <<>> DIG 9.10.6 <<>> @10.7.30.248 app.dracarys.test A +noall +answer
+} (1 server found)
+
+3; global options: +cmd
+
+app.dracarys. test. 30 IN N 10.7.30.268
+pranjalshukla@Pranjals-MacBook-Pro-3 ~ %
+
+—-zsh

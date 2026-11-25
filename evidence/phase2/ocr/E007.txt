@@ -1,0 +1,117 @@
+==> Would install 1 dependency for nginx:
+
+openss1@4 4.1.0
+
+Would upgrade 2 dependencies for nginx:
+
+ca-certificates 2026-05-14 -> 2026-11-05
+
+pore2 10.47 —> 10.49
+
+Do you want to proceed with the installation? [y/n]
+
+Fetching downloads for: nginx
+
+Bottle Manifest ca-certificates (2026-11-05)
+
+Bottle Manifest openssl@4 (4.1.0)
+
+Bottle Manifest pcre2 (10.49)
+
+Bottle ca-certificates (2026-11-05)
+
+Bottle nginx (1.31.10)
+
+Bottle pcre2 (10.49)
+
+Bottle openss1@4 (4.1.0)
+
+Installing dependencies for nginx: co-certificates ?, openss1@4 and pere2 >
+Upgrading nginx dependency: ca-certificates (2@26-@5-14 -> 2026-11-05)
+Pouring ca-certificates--2026-11-05.all.bottle.tar.gz
+/opt/homebrew/Cellar/ca-certificates/2026-11-05: 5 files, 196.1kB
+Installing nginx dependency: openss104 (4.1.0)
+
+Pouring openss1@4--4.1.0.arm64_golden_gate.bottle.tar.gz
+Unlinking /opt/homebrew/Cellar/openss1@3/3.6.2... 6568 symlinks removed.
+B® /opt/homebrew/Cellar/openss104/4.1.0: 6,869 files, 24.6MB
+Upgrading nginx dependency: pcre? (10.47 -> 10.49)
+
+Pouring pere2--10.49.arm64_golden_, jottle.tar.gz
+/opt/homebrew/Cellar/pcre2/10.49: 245 files, 7.3MB
+
+Installing nginx
+
+Pouring nginx--1.31.10.arm64_golden_gate.bottle.tar.gz
+/opt/homebrew/Cellar/nginx/1.31.10: 28 files, 2.8MB
+
+Caveats
+
+==> nginx
+
+Docroot is: /opt/homebrew/var/www
+
+sss
+
+The default port has been set in /opt/homebrew/etc/nginx/nginx.conf to 8880 so that
+nginx can run without sudo.
+
+nginx will load all files in /opt/homebrew/etc/nginx/servers/.
+
+To start nginx now and restart at login:
+brew services start nginx
+Or, if you don't want/need a background service you can just run:
+/opt/homebrew/opt/nginx/bin/nginx -g daemon\ off
+[meghna@Meghnas-MacBook-Pro ~ % /opt/homebrew/bin/ng:
+nginx version: nginx/1.31.10
+meghna@Meghnas-MacBook-Pro ~ % mkdir -p ~/dracarys-private
+chmod 70@ ~/dracarys-private
+ced ~/dracarys-private
+(umask @77
+[meghna@Meghnas-MacBook-Pro dracarys-private % openssl genrsa -out standby.key 2048
+Generating RSA private key, 2048 bit long modulus
+ears
+
+ttt
+
+e is 65537 (0x10001)
+meghna@Meghnas-MacBook-Pro dracarys-private % openssl req -new \
+-key standby.key \
+-subj "/CN=app.dracarys.test" \
+[out standby.csr
+[meghna@Meghnas-MacBook-Pro dracarys-private % openssl req -in standby.csr -noout -verify -subject
+verify OK
+subject=/CN=app.dracarys.test
+{meghna@Meghnas-MacBook-Pro dracarys-private % open ~/dracarys-private
+{meghna@Meghnas-MacBook-Pro dracarys-private % cp ~/Downloads/standby.crt ~/dracarys-private/standby.crt
+{meghna@Meghnas-MacBook-Pro dracarys-private % openssl x509 -in ~/dracarys-private/standby.crt -noout -modulus | openssl dgst -sha256
+bb4439ceeOch2ff1cde425efb98d79c16d9e5b1e8294014F1946d9646317ed51
+[meghna@Meghnas-MacBook-Pro dracarys-private % openssl rsa -in ~/dracarys-private/standby.key -noout -modulus | openssl dgst -sha256
+bb4439ceeOch2ff1cde425efb98d79c16d9e5b1e8294014F1946d9646317ed51
+meghna@Meghnas-MacBook-Pro dracarys-private % ff
+
+Verified
+
+Verified
+
+Downloaded
+Downloaded
+Downloaded
+Downloaded
+Downloaded
+
+8
+
+4
+18.
+109.
+
+ali
+
+-3KB/  8.3KB
+-7KB/  4.7KB
+5KB/ 18.5KB
+6KB/109.6KB
+-6MB/  1.6MB
+-5MB/ 2.5MB
+5MB/ 11.5MB
